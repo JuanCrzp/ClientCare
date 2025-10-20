@@ -1,0 +1,23 @@
+# Archivos y carpetas innecesarias en la imagen
+.git
+.github
+.gitignore
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.log
+.env
+.env.*
+.venv/
+venv/
+.coverage*
+.pytest_cache/
+.mypy_cache/
+.DS_Store
+Thumbs.db
+
+# Documentación y pruebas
+/docs/
+/tests/
+/ci/
+/examples/

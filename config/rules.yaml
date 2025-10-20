@@ -1,0 +1,192 @@
+###############################################
+# Reglas del bot (configuración funcional)    #
+# - TODAS las opciones funcionales van aquí.  #
+# - Secretos y tokens van en .env             #
+# - Puedes crear overrides por chat/canal     #
+###############################################
+
+default:
+  # Encendido general del bot por canal/grupo
+  enabled: true                  # Si es false, el bot ignora mensajes en este chat/canal
+
+  # Metadatos y textos base del bot
+  bot_name: "AtencionClienteBot" # Nombre del bot (sólo informativo/logs)
+  locale: "es"                   # Idioma principal
+  greetings_enabled: true        # (obsoleto, usar greeting_enabled)
+  greeting_enabled: true         # Si es true, el bot muestra el saludo antes del menú
+  greeting_text: |               # Puedes personalizar este saludo. Si greeting_enabled es false, no se muestra.
+    ¡Hola {user}! Soy tu asistente virtual de atención al cliente.
+    Estoy aquí para ayudarte: puedes consultar el FAQ, abrir un ticket o hablar con un agente.
+    Selecciona una opción del menú o cuéntame brevemente tu consulta.
+  fallback_text: "No entendí tu mensaje. Escribe /start para ver el menú." # Respuesta por defecto si no se reconoce la entrada
+
+
+  # Encendido/apagado de funcionalidades principales (features)
+  # Puedes desactivar FAQ, tickets, escalación, etc. por canal o global
+  features:
+    connectors:
+      telegram_enabled: true     # Conector Telegram activo (requiere TELEGRAM_TOKEN en .env)
+      webchat_enabled: true      # Conector Webchat activo
+      whatsapp_enabled: true     # Conector WhatsApp activo (requiere tokens .env)
+    faq:
+      enabled: true              # Respuestas automáticas de FAQ
+      not_found_message: "No encontré esa pregunta en el FAQ. ¿Quieres crear un ticket?"
+    tickets:
+      enabled: true              # Gestión de tickets
+      category_options: ["general", "facturacion", "tecnico"]
+      default_priority: "normal"
+    escalation:
+      enabled: true              # Escalamiento a agente humano
+      request_contact_fields: ["nombre", "correo"]
+
+
+  # =============================
+  # Sinónimos (atajos globales)
+  # =============================
+  # Palabras/atajos que el bot reconoce en cualquier estado para ciertos flujos.
+  # Se usan como apoyo a NLU e interpretación rápida fuera de menús.
+  synonyms:
+    menu: ["menu", "menú", "/start", "inicio", "empezar", "hola", "buenas"]
+    faq: ["faq", "preguntas", "ayuda", "info", "informacion", "información"]
+    ticket: ["ticket", "soporte", "reclamo", "incidencia", "abrir ticket", "crear ticket", "abrirr tiket", "tickets"]
+    agent: ["agente", "humano", "asesor", "representante", "hablar con agente", "soporte humano", "quiero humano"]
+
+
+  # =============================
+  # Menús dinámicos configurables
+  # =============================
+  # Si 'menus.items' está definido, el bot usará esta estructura en lugar del menú clásico.
+  # Puedes definir cualquier cantidad de menús y submenús, con las opciones y acciones que desees.
+  # Cada opción puede tener triggers (palabras o números que la activan), acción y destino.
+  # Para ocultar un menú o una opción, usa 'enabled: false'.
+  # Ejemplo: para ocultar el submenú ventas_menu, pon 'enabled: false' en ese bloque.
+  menus:
+    root: main
+    items:
+      main:
+        text: |
+          Menú principal:
+          1) Preguntas frecuentes
+          2) Crear ticket
+          3) Hablar con agente
+          9) Volver (si aplica)
+        # Opciones del menú principal. Puedes agregar, quitar o desactivar (enabled: false) cualquier opción.
+        options:
+          - triggers: ["1", "faq", "preguntas"] # Palabras o números que activan esta opción
+            action: goto         # Acción: ir a otro menú
+            target: faq_menu     # ID del submenú destino
+            enabled: true        # Si pones false, la opción no aparece ni responde
+          - triggers: ["2", "ticket", "soporte", "reclamo"]
+            action: ticket_ask_detail # Acción: iniciar flujo de ticket
+            enabled: true
+          - triggers: ["3", "agente", "humano", "asesor"]
+            action: escalation   # Acción: derivar a agente humano
+            enabled: true
+      faq_menu:
+        text: |
+          Submenú FAQ:
+          - Escribe una palabra clave como "precios", "planes", "demo".
+          - Escribe 9 o "menu" para volver.
+        # Opciones del submenú FAQ
+        options:
+          - triggers: ["9", "menu", "volver", "back"] # Palabras/números para volver atrás
+            action: back
+
+  # =============================
+  # NLU simple configurable (intents y saludos)
+  # =============================
+  # Define saludos y patrones de intención para orientar al usuario sin tocar código.
+  nlu:
+    greetings:
+      enabled: true
+      # Palabras que disparan el saludo + menú (usa minúsculas)
+      triggers: ["/start", "hola", "buenas", "hello", "hi", "hey", "menu"]
+    # Umbral de confianza para aceptar una intención (0-1)
+    threshold: 0.78
+    # Mensaje para orientar al usuario cuando hay una coincidencia pero por debajo del umbral
+    low_confidence_message: "Para ayudarte mejor puedo: mostrar el menú, crear un ticket o derivarte a un agente. ¿Qué prefieres?"
+    intents:
+      - name: ver_menu
+        patterns: ["ver menu", "ver menú", "menu", "opciones", "inicio", "empezar"]
+        action: goto
+        target: main
+      - name: abrir_ticket
+        patterns: ["abrir ticket", "crear ticket", "tengo un problema", "reclamo", "soporte", "abrirr tiket", "tickets", "necesito soporte"]
+        action: ticket_ask_detail
+      - name: hablar_agente
+        patterns: ["hablar con agente", "asesor", "humano", "agente", "soporte humano", "quiero humano", "quiero hablar con humano"]
+        action: escalation
+      - name: faq
+        patterns: ["faq", "preguntas", "precios", "planes", "información", "informacion"]
+        action: goto
+        target: faq_menu
+      - name: consultar_ticket
+        patterns: ["ver ticket", "consultar ticket", "estado ticket", "/ticket"]
+        action: reply
+        reply_text: "Para consultar un ticket escribe: /ticket <id>. Por ejemplo: /ticket 123"
+      - name: despedida
+        patterns: ["gracias", "muchas gracias", "listo", "hasta luego", "adios", "adiós"]
+        action: reply
+        reply_text: "¡Con gusto! Si necesitas algo más, estoy aquí para ayudarte."
+  # =============================
+  # Base de conocimiento (FAQ)
+  # =============================
+  # Aquí defines las preguntas y respuestas que el bot usará en el submenú FAQ.
+  # Puedes agregar tantas como quieras. El bot busca coincidencias por palabra clave.
+  faq:
+    - q: "precios"
+      a: "Nuestros planes comienzan en $X/mes. ¿Quieres que te envíe el link de precios?"
+    - q: "planes"
+      a: "Tenemos Plan Básico, Pro y Enterprise. Puedo ayudarte a elegir según tu caso."
+    - q: "demo"
+      a: "Puedes agendar una demo en https://example.com/demo"
+    - q: "prueba gratis"
+      a: "Ofrecemos 14 días de prueba sin tarjeta. ¿Quieres activarla?"
+    - q: "integración"
+      a: "Ofrecemos SDKs y APIs. Revisa docs en https://example.com/docs"
+    - q: "facturación"
+      a: "La facturación es mensual con tarjeta o transferencia. Podemos emitir factura electrónica."
+    - q: "soporte"
+      a: "Nuestro SLA estándar es de 24h. Para planes Enterprise, SLA dedicado."
+
+  # =============================
+  # Mensajes de cada flujo (tickets, escalación, etc.)
+  # =============================
+  escalation:
+    enabled: true
+    message: "Voy a derivarte con un agente. Deja tu nombre y correo, por favor."
+    thanks_message: "¡Gracias! Un agente te contactará pronto."
+  tickets:
+    enabled: true
+    message_opened: "He creado tu ticket #{ticket_id}. Te avisaré cualquier actualización."
+    message_status_template: "Ticket #{ticket_id} - estado: {status}"
+    message_ask_detail: "Por favor, cuéntame brevemente el problema."
+
+  # =============================
+  # Rate limiting (antispam)
+  # =============================
+  rate_limit:
+    per_user_per_minute: 30       # Máximo de mensajes por usuario por minuto
+    message: "Demasiados mensajes, intenta en un minuto."
+    global_per_minute: 200        # Límite global opcional
+
+  # =============================
+  # Notificaciones a administradores (opcional)
+  # =============================
+  admin_notify:
+    enabled: false
+    channel_id: ""                # chat_id destino para avisos
+    new_ticket_template: "Nuevo ticket #{ticket_id} de {user_id}: {text}"
+
+# ===============================
+# Overrides de ejemplo por chat_id (avanzado)
+# ===============================
+# Usa el ID del chat/grupo como clave de primer nivel. Sólo declara lo que cambias respecto al default.
+# Ejemplo:
+# "-100123456789":
+#   enabled: true
+#   features:
+#     faq:
+#       enabled: false
+#   menus:
+#     ...

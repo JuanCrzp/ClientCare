@@ -1,0 +1,49 @@
+%%
+---
+title: ERD - ClientCare Bot (MySQL)
+---
+%%
+
+flowchart LR
+  T[tenants]
+  C[channels]
+  U[end_users]
+  A[agents]
+  CV[conversations]
+  M[messages]
+  TK[tickets]
+  TE[ticket_events]
+  TG[tags]
+  TT[ticket_tags]
+  FC[faq_categories]
+  FA[faq_articles]
+  NI[nlu_intents]
+  NS[nlu_synonyms]
+  NL[nlu_logs]
+  CFG[config_versions]
+  WH[webhooks]
+  WD[webhook_deliveries]
+
+  T --> C
+  T --> U
+  T --> A
+  T --> TK
+  T --> FC
+  T --> FA
+  T --> NI
+  T --> NL
+  T --> CFG
+  T --> WH
+
+  C --> U
+  C --> CV
+
+  U --> CV
+  CV --> M
+  CV --> TK
+  TK --> TE
+  TK --> TT
+  TG --> TT
+  FC --> FA
+  NI --> NS
+  WH --> WD
