@@ -1,0 +1,25 @@
+<svg width="800" height="180" viewBox="0 0 800 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGradient" x1="0" y1="0" x2="800" y2="180" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8F5CFF"/>
+      <stop offset="1" stop-color="#FF7EB3"/>
+    </linearGradient>
+    <filter id="shadow" x="0" y="0" width="800" height="180" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+  <rect width="800" height="180" rx="32" fill="url(#bgGradient)" filter="url(#shadow)"/>
+  <g>
+    <circle cx="110" cy="90" r="48" fill="#fff" opacity="0.13"/>
+    <circle cx="110" cy="90" r="38" fill="#fff" opacity="0.22"/>
+    <g>
+      <rect x="80" y="65" width="60" height="50" rx="12" fill="#fff"/>
+      <rect x="90" y="80" width="40" height="8" rx="4" fill="#8F5CFF"/>
+      <rect x="90" y="95" width="28" height="6" rx="3" fill="#FFB3E6"/>
+      <circle cx="120" cy="110" r="5" fill="#FF7EB3"/>
+    </g>
+  </g>
+  <text x="180" y="85" font-family="Segoe UI, Arial, sans-serif" font-size="48" font-weight="bold" fill="#fff" letter-spacing="2">ClientCare</text>
+  <text x="185" y="130" font-family="Segoe UI, Arial, sans-serif" font-size="28" fill="#F8EFFF">Bot de Atención Multicanal</text>
+  <text x="185" y="160" font-family="Segoe UI, Arial, sans-serif" font-size="18" fill="#FFD6F5">Automatiza, responde y escala tickets en SaaS</text>
+</svg>

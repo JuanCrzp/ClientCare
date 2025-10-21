@@ -1,4 +1,9 @@
 
+
+<p align="center">
+   <img src="docs/clientcare_banner.svg" alt="ClientCare Bot Banner" width="700"/>
+</p>
+
 # ClientCare – Bot de Atención al Cliente
 
 <p align="center">
