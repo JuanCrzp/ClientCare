@@ -14,11 +14,24 @@ default:
   locale: "es"                   # Idioma principal
   greetings_enabled: true        # (obsoleto, usar greeting_enabled)
   greeting_enabled: true         # Si es true, el bot muestra el saludo antes del menú
+  greeting_ttl_days: 7          # Repetir saludo automáticamente después de N días (0 = nunca repetir)
   greeting_text: |               # Puedes personalizar este saludo. Si greeting_enabled es false, no se muestra.
     ¡Hola {user}! Soy tu asistente virtual de atención al cliente.
     Estoy aquí para ayudarte: puedes consultar el FAQ, abrir un ticket o hablar con un agente.
     Selecciona una opción del menú o cuéntame brevemente tu consulta.
   fallback_text: "No entendí tu mensaje. Escribe /start para ver el menú." # Respuesta por defecto si no se reconoce la entrada
+
+  # =============================
+  # Memoria conversacional (historial y temas)
+  # =============================
+  memory:
+    enabled: true               # Registrar historial y temas abiertos
+    history_max: 100            # Máximo de mensajes por usuario/chat en memoria
+    resume_after_minutes: 60    # Ofrecer retomar si vuelve después de X minutos
+    topic_ttl_days: 14          # Tiempo de vida de un tema abierto (días)
+    offer_resume_message: "Veo que tenías pendiente: {topic}. ¿Quieres continuar?"
+    history_command_enabled: true
+    history_privacy_mask_emails: true
 
 
   # Encendido/apagado de funcionalidades principales (features)
@@ -105,11 +118,27 @@ default:
     threshold: 0.78
     # Mensaje para orientar al usuario cuando hay una coincidencia pero por debajo del umbral
     low_confidence_message: "Para ayudarte mejor puedo: mostrar el menú, crear un ticket o derivarte a un agente. ¿Qué prefieres?"
+    # Proveedor NLU: "simple" (fuzzy por patrones) o "ml" (Naive Bayes n-gramas)
+    provider: ml
+    ml:
+      retrain_on_start: false        # true para reentrenar en cada arranque (dev)
+      model_path: data/models/nlu_nb.pkl
+      char_ngrams: [3, 5]
+      word_ngrams: [1, 2]
+      alpha: 1.0
     intents:
       - name: ver_menu
         patterns: ["ver menu", "ver menú", "menu", "opciones", "inicio", "empezar"]
         action: goto
         target: main
+      - name: ver_historial
+        patterns: ["historial", "/historial", "ver historial", "mis mensajes"]
+        action: reply
+        reply_text: "Mostrando tu historial reciente…"
+      - name: continuar
+        patterns: ["continuar", "/continuar", "seguir", "retomar"]
+        action: reply
+        reply_text: "Retomando donde lo dejamos…"
       - name: abrir_ticket
         patterns: ["abrir ticket", "crear ticket", "tengo un problema", "reclamo", "soporte", "abrirr tiket", "tickets", "necesito soporte"]
         action: ticket_ask_detail
@@ -177,6 +206,18 @@ default:
     enabled: false
     channel_id: ""                # chat_id destino para avisos
     new_ticket_template: "Nuevo ticket #{ticket_id} de {user_id}: {text}"
+
+  # =============================
+  # Administración (comandos)
+  # =============================
+  admin:
+    enabled: true
+    user_ids: []                # IDs permitidos para /admin (rellena con tus IDs)
+    commands_help: |
+      Comandos admin:
+      - /admin reset_greeting <user_id>
+      - /admin clear_history <user_id>
+      - /admin set_topic <user_id> <topic>
 
 # ===============================
 # Overrides de ejemplo por chat_id (avanzado)

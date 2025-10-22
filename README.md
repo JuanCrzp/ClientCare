@@ -1,10 +1,8 @@
-
-
 <p align="center">
    <img src="docs/clientcare_banner.svg" alt="ClientCare Bot Banner" width="700"/>
 </p>
 
-# ClientCare – Bot de Atención al Cliente
+
 
 <p align="center">
    <!-- Reemplaza ORG/REPO por tu organización y repo en GitHub para activar el badge -->
@@ -40,9 +38,88 @@
 
 ## 🚀 Descripción General
 
+ClientCare es un bot modular para atención al cliente, diseñado para empresas SaaS que buscan automatizar FAQ, gestión de tickets, escalamiento a agentes y soporte multicanal (Telegram, Webchat, WhatsApp Cloud API). Toda
+
 ClientCare es un bot modular para atención al cliente, diseñado para empresas SaaS que buscan automatizar FAQ, gestión de tickets, escalamiento a agentes y soporte multicanal (Telegram, Webchat, WhatsApp Cloud API). Toda la lógica y flujos se configuran en `config/rules.yaml` y `.env`, sin tocar el código.
 
 ---
+
+## 🧠 NLU con Machine Learning (sin servicios externos)
+
+---
+
+## 🧠 Memoria Conversacional y Gestión de Contexto (NUEVO)
+
+Desde octubre 2025, ClientCare incorpora un sistema profesional de memoria conversacional y gestión de contexto, listo para empresas y migración a base de datos.
+
+### Características principales:
+- **Historial persistente** por usuario/chat (límite configurable, por defecto 100 mensajes)
+- **Temas abiertos** con TTL (días), para retomar conversaciones pendientes
+- **Oferta automática de reanudar** si el usuario vuelve tras X minutos (configurable)
+- **Comando `/historial`**: muestra los últimos mensajes del usuario (con privacidad opcional)
+- **Comando `/continuar`**: retoma el tema pendiente si existe
+- **Comandos admin**: `/admin reset_greeting <user_id>`, `/admin clear_history <user_id>`, `/admin set_topic <user_id> <topic>`
+- **Configuración centralizada** en `config/rules.yaml`:
+
+```yaml
+memory:
+   enabled: true
+   history_max: 100
+   resume_after_minutes: 60
+   topic_ttl_days: 14
+   offer_resume_message: "Veo que tenías pendiente: {topic}. ¿Quieres continuar?"
+   history_command_enabled: true
+   history_privacy_mask_emails: true
+```
+
+### Ejemplo de uso
+- Usuario inicia conversación, el bot registra cada mensaje y detecta si hay temas pendientes.
+- Si el usuario vuelve tras un tiempo, el bot le ofrece continuar donde lo dejó.
+- El usuario puede consultar su historial con `/historial`.
+- Los administradores pueden gestionar saludos, historial y temas vía `/admin`.
+
+### Migración a MySQL
+- El repositorio de conversaciones (`src/storage/conversation_repository.py`) está diseñado para migrar fácilmente a MySQL u otra base de datos relacional.
+- Solo es necesario reemplazar la lógica de lectura/escritura JSON por queries SQL.
+- Estructura sugerida: tabla `conversations` (user_id, chat_id, history, topic, last_active, expires_at).
+
+---
+
+El bot incluye un clasificador NLU propio basado en Naive Bayes Multinomial con n-gramas (caracteres y palabras). Se entrena directamente desde `rules.nlu.intents.patterns` y se serializa en `data/models/nlu_nb.pkl`.
+
+Características clave:
+- Entrenamiento 100% local (sin APIs externas)
+- N-gramas de caracteres (3–5) y palabras (1–2) configurables
+- Suavizado de Laplace (`alpha`) y umbral (`threshold`) ajustables
+- Persistencia en disco y reporte de metadatos del modelo
+
+Activación en `config/rules.yaml` (`default.nlu`):
+
+```yaml
+provider: ml
+ml:
+   retrain_on_start: false     # true para reentrenar en cada arranque (desarrollo)
+   model_path: data/models/nlu_nb.pkl
+   char_ngrams: [3, 5]
+   word_ngrams: [1, 2]
+   alpha: 1.0
+threshold: 0.78
+```
+
+Entrenamiento y verificación:
+
+```cmd
+# Entrenar desde rules (genera nlu_nb.pkl y nlu_report.json)
+.venv\Scripts\python.exe scripts\train_nlu.py
+
+# Ver estado del modelo (ruta, labels, vocab_size, checksum, fechas, etc.)
+.venv\Scripts\python.exe scripts\nlu_info.py
+```
+
+Reporte generado: `data/models/nlu_report.json` con metadatos del modelo (timestamp, número de ejemplos, distribución por label, tamaño de vocabulario, n-gramas, alpha, threshold y checksum de intents).
+
+Si `provider` no se define o es `simple`, se usa el clasificador difuso por defecto (totalmente compatible).
+
 
 ## 🏗️ Arquitectura
 

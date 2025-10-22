@@ -13,6 +13,10 @@ Se actualiza automáticamente vía pre-commit. No editar manualmente.
 ├── config
 │   └── rules.yaml
 ├── data
+│   ├── models
+│   │   ├── nlu_nb.pkl
+│   │   └── nlu_report.json
+│   ├── conversations.json
 │   ├── state.json
 │   └── tickets.json
 ├── docs
@@ -21,6 +25,7 @@ Se actualiza automáticamente vía pre-commit. No editar manualmente.
 │   │   ├── README.md
 │   │   └── schema.sql
 │   ├── architecture.md
+│   ├── clientcare_banner.svg
 │   ├── deployment.md
 │   ├── estructura.md
 │   ├── faq.md
@@ -35,7 +40,10 @@ Se actualiza automáticamente vía pre-commit. No editar manualmente.
 │   └── docker
 │       └── Dockerfile
 ├── scripts
-│   └── generate_tree.py
+│   ├── generate_tree.py
+│   ├── nlu_info.py
+│   ├── smoke_nlu.py
+│   └── train_nlu.py
 ├── src
 │   ├── app
 │   │   ├── __init__.py
@@ -68,6 +76,7 @@ Se actualiza automáticamente vía pre-commit. No editar manualmente.
 │   │   └── classifier.py
 │   ├── storage
 │   │   ├── __init__.py
+│   │   ├── conversation_repository.py
 │   │   ├── repository.py
 │   │   └── state_repository.py
 │   ├── tasks
@@ -79,8 +88,10 @@ Se actualiza automáticamente vía pre-commit. No editar manualmente.
 ├── tests
 │   ├── integration
 │   ├── unit
+│   │   ├── test_conversation_repository.py
 │   │   ├── test_generate_tree.py
 │   │   ├── test_manager.py
+│   │   ├── test_memory_resume.py
 │   │   ├── test_nlu_advanced.py
 │   │   └── test_repository.py
 │   └── conftest.py

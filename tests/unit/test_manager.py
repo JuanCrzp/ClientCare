@@ -38,8 +38,10 @@ def test_ticket_guided_flow():
 
 
 def test_intents_open_ticket():
+    import time
     bot = BotManager()
-    r = bot.process_message({"text": "quiero abrir ticket", "platform_user_id": "u4", "group_id": "g1"})
+    unique_user = f"u_intent_test_{int(time.time() * 1000)}"
+    r = bot.process_message({"text": "quiero abrir ticket", "platform_user_id": unique_user, "group_id": "g1"})
     assert r and "Por favor" in (r.get("text") or "")
 
 
