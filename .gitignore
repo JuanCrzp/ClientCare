@@ -173,6 +173,7 @@ Thumbs.db
 # Project specific
 data/state.json
 data/tickets.json
+data/models/
 *.log
 temp/
 tmp/
