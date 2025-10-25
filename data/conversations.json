@@ -744,30 +744,6 @@
   "2072596071|2072596071": {
     "history": [
       {
-        "ts": 1761111470.8894677,
-        "role": "user",
-        "text": "Hola",
-        "meta": {}
-      },
-      {
-        "ts": 1761111485.8994985,
-        "role": "user",
-        "text": "Muéstrame el menú",
-        "meta": {}
-      },
-      {
-        "ts": 1761111502.0184865,
-        "role": "user",
-        "text": "Preguntas",
-        "meta": {}
-      },
-      {
-        "ts": 1761111510.6821806,
-        "role": "user",
-        "text": "Precios",
-        "meta": {}
-      },
-      {
         "ts": 1761111517.3963768,
         "role": "user",
         "text": "9",
@@ -904,9 +880,471 @@
         "role": "user",
         "text": "Hola",
         "meta": {}
+      },
+      {
+        "ts": 1761376270.12755,
+        "role": "user",
+        "text": "Quiero saber sobre",
+        "meta": {}
+      },
+      {
+        "ts": 1761376274.8827765,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761380051.7387922,
+        "role": "user",
+        "text": "hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761380067.517815,
+        "role": "user",
+        "text": "que planes maneja",
+        "meta": {}
+      },
+      {
+        "ts": 1761380082.1063514,
+        "role": "user",
+        "text": "que precios manejan",
+        "meta": {}
+      },
+      {
+        "ts": 1761380096.5940573,
+        "role": "user",
+        "text": "si wnviame el catalogo",
+        "meta": {}
+      },
+      {
+        "ts": 1761383565.7611017,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761383588.280183,
+        "role": "user",
+        "text": "Me gustaría ver el catálogo",
+        "meta": {}
+      },
+      {
+        "ts": 1761383596.7664018,
+        "role": "user",
+        "text": "Catálogo",
+        "meta": {}
+      },
+      {
+        "ts": 1761389269.3692193,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761389301.333281,
+        "role": "user",
+        "text": "Que precios manejan",
+        "meta": {}
+      },
+      {
+        "ts": 1761392404.413211,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761392415.3761115,
+        "role": "user",
+        "text": "Ver menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761393274.1126833,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761393281.8105493,
+        "role": "user",
+        "text": "Ver menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761394400.9950476,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761394406.664255,
+        "role": "user",
+        "text": "Quiero ver el menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761394416.777878,
+        "role": "user",
+        "text": "Y qué precio manejan ?",
+        "meta": {}
+      },
+      {
+        "ts": 1761394424.526781,
+        "role": "user",
+        "text": "Que precios manejan ?",
+        "meta": {}
+      },
+      {
+        "ts": 1761394430.618757,
+        "role": "user",
+        "text": "Precios",
+        "meta": {}
+      },
+      {
+        "ts": 1761394438.9231126,
+        "role": "user",
+        "text": "Horario",
+        "meta": {}
+      },
+      {
+        "ts": 1761394458.3750787,
+        "role": "user",
+        "text": "Precios",
+        "meta": {}
+      },
+      {
+        "ts": 1761394468.901536,
+        "role": "user",
+        "text": "Envíos",
+        "meta": {}
+      },
+      {
+        "ts": 1761394687.790799,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761394703.6789417,
+        "role": "user",
+        "text": "Me gustaría ver los precios",
+        "meta": {}
+      },
+      {
+        "ts": 1761394716.5501084,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761394721.9736736,
+        "role": "user",
+        "text": "Quiero ver los precios",
+        "meta": {}
+      },
+      {
+        "ts": 1761394729.5540354,
+        "role": "user",
+        "text": "Precios",
+        "meta": {}
+      },
+      {
+        "ts": 1761394741.0685081,
+        "role": "user",
+        "text": "Horario",
+        "meta": {}
+      },
+      {
+        "ts": 1761394751.966114,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761394756.958807,
+        "role": "user",
+        "text": "Qué horarios tienen",
+        "meta": {}
+      },
+      {
+        "ts": 1761394787.9572115,
+        "role": "user",
+        "text": "Ubicación",
+        "meta": {}
+      },
+      {
+        "ts": 1761394813.2004716,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761394818.3009403,
+        "role": "user",
+        "text": "Horario",
+        "meta": {}
+      },
+      {
+        "ts": 1761395012.3928688,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761395017.899905,
+        "role": "user",
+        "text": "Qué horario tienen",
+        "meta": {}
+      },
+      {
+        "ts": 1761395026.8635905,
+        "role": "user",
+        "text": "Que precios manejan",
+        "meta": {}
+      },
+      {
+        "ts": 1761395072.0319302,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761395078.1453395,
+        "role": "user",
+        "text": "Ver el menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761395088.1279035,
+        "role": "user",
+        "text": "Que horario tienen",
+        "meta": {}
+      },
+      {
+        "ts": 1761395109.6314046,
+        "role": "user",
+        "text": "Dónde está su ubicación",
+        "meta": {}
+      },
+      {
+        "ts": 1761395500.1213117,
+        "role": "user",
+        "text": "Que precios tienen",
+        "meta": {}
+      },
+      {
+        "ts": 1761395505.6872044,
+        "role": "user",
+        "text": "Precios",
+        "meta": {}
+      },
+      {
+        "ts": 1761395656.389579,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761395661.050783,
+        "role": "user",
+        "text": "Que precios tienen",
+        "meta": {}
+      },
+      {
+        "ts": 1761395696.4278493,
+        "role": "user",
+        "text": "Qué horario tienen",
+        "meta": {}
+      },
+      {
+        "ts": 1761395707.1303475,
+        "role": "user",
+        "text": "Quienes son",
+        "meta": {}
+      },
+      {
+        "ts": 1761395918.07662,
+        "role": "user",
+        "text": "a qué hora abren",
+        "meta": {}
+      },
+      {
+        "ts": 1761395931.4422708,
+        "role": "user",
+        "text": "Hacen cambios",
+        "meta": {}
+      },
+      {
+        "ts": 1761395948.3930998,
+        "role": "user",
+        "text": "Quién eres",
+        "meta": {}
+      },
+      {
+        "ts": 1761395962.7174006,
+        "role": "user",
+        "text": "Dónde queda ?",
+        "meta": {}
+      },
+      {
+        "ts": 1761396081.5324912,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761396085.9423573,
+        "role": "user",
+        "text": "Dónde queda ?",
+        "meta": {}
+      },
+      {
+        "ts": 1761396097.138741,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761396101.4347107,
+        "role": "user",
+        "text": "Dónde queda ?",
+        "meta": {}
+      },
+      {
+        "ts": 1761396116.648609,
+        "role": "user",
+        "text": "dónde queda ?",
+        "meta": {}
+      },
+      {
+        "ts": 1761396338.2770383,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761396347.2336535,
+        "role": "user",
+        "text": "dónde queda ?",
+        "meta": {}
+      },
+      {
+        "ts": 1761396751.8849273,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761396761.3457289,
+        "role": "user",
+        "text": "Dónde están",
+        "meta": {}
+      },
+      {
+        "ts": 1761396820.1159828,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761397170.726999,
+        "role": "user",
+        "text": "Que puedes hacer",
+        "meta": {}
+      },
+      {
+        "ts": 1761397769.2709427,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761397775.7010105,
+        "role": "user",
+        "text": "Que puedes hacer",
+        "meta": {}
+      },
+      {
+        "ts": 1761398055.012389,
+        "role": "user",
+        "text": "Que puedes hacer",
+        "meta": {}
+      },
+      {
+        "ts": 1761398067.0284321,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761398070.841353,
+        "role": "user",
+        "text": "Que puedes hacer",
+        "meta": {}
+      },
+      {
+        "ts": 1761398093.8658636,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761398101.767821,
+        "role": "user",
+        "text": "Que puedes hacer",
+        "meta": {}
+      },
+      {
+        "ts": 1761398131.2633855,
+        "role": "user",
+        "text": "Qué horario manejan ?",
+        "meta": {}
+      },
+      {
+        "ts": 1761398536.2922134,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761398562.9435897,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761398576.8610437,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761398782.5260417,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761399562.3597898,
+        "role": "user",
+        "text": "No",
+        "meta": {}
+      },
+      {
+        "ts": 1761399566.785473,
+        "role": "user",
+        "text": "Ok",
+        "meta": {}
+      },
+      {
+        "ts": 1761400431.1905334,
+        "role": "user",
+        "text": "Dónde está ubicados",
+        "meta": {}
       }
     ],
-    "last_active": 1761372543.8879912
+    "last_active": 1761400431.1905415
   },
   "g1|u_intent_test_1761362415646": {
     "history": [
@@ -940,5 +1378,1631 @@
       }
     ],
     "last_active": 1761362865.3764825
+  },
+  "-|1234567890": {
+    "history": [
+      {
+        "ts": 1761376427.910918,
+        "role": "user",
+        "text": "Hola desde prueba",
+        "meta": {}
+      }
+    ],
+    "last_active": 1761376427.9109197
+  },
+  "15556370335|573108341817": {
+    "history": [
+      {
+        "ts": 1761390266.000779,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761390307.3920352,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761390818.8007295,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761390843.6183045,
+        "role": "user",
+        "text": "Me gustaría ver el catálogo",
+        "meta": {}
+      },
+      {
+        "ts": 1761391221.9138367,
+        "role": "user",
+        "text": "Ver el menú principal",
+        "meta": {}
+      },
+      {
+        "ts": 1761391231.8343494,
+        "role": "user",
+        "text": "Ver menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761391239.899804,
+        "role": "user",
+        "text": "Menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761391293.942559,
+        "role": "user",
+        "text": "Catálogo",
+        "meta": {}
+      },
+      {
+        "ts": 1761391301.0205402,
+        "role": "user",
+        "text": "Menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761391321.9318962,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761391337.9579585,
+        "role": "user",
+        "text": "Envíame el menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761391355.8176746,
+        "role": "user",
+        "text": "inicio",
+        "meta": {}
+      },
+      {
+        "ts": 1761391490.5643709,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761391501.8454876,
+        "role": "user",
+        "text": "Quiero ver el menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761391513.2947676,
+        "role": "user",
+        "text": "Menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761391516.948575,
+        "role": "user",
+        "text": "Ver menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761391716.186896,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761391729.1110916,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761391755.0883467,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761391769.397177,
+        "role": "user",
+        "text": "Ver el menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761391833.3612514,
+        "role": "user",
+        "text": "/start",
+        "meta": {}
+      },
+      {
+        "ts": 1761391845.2310307,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761391934.130319,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761391953.3341646,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761392068.1135688,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761392085.7470865,
+        "role": "user",
+        "text": "Me gustaría ver el menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761392093.5729113,
+        "role": "user",
+        "text": "Ver el menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761392101.3559794,
+        "role": "user",
+        "text": "Menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761392237.5036557,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761392249.7361224,
+        "role": "user",
+        "text": "Quiero ver el menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761392290.9383013,
+        "role": "user",
+        "text": "Si",
+        "meta": {}
+      },
+      {
+        "ts": 1761392299.4005487,
+        "role": "user",
+        "text": "Menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761392327.3255742,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761392344.4279332,
+        "role": "user",
+        "text": "Ver menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761392668.1483784,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761392682.5094857,
+        "role": "user",
+        "text": "Ver el menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761392744.7975528,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761392755.8304782,
+        "role": "user",
+        "text": "Ver el menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761393293.0042624,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761393298.6801958,
+        "role": "user",
+        "text": "Ver el menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761393823.816264,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761393836.5263534,
+        "role": "user",
+        "text": "Ver el menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761393908.617333,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761393921.4503675,
+        "role": "user",
+        "text": "Menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761393926.328413,
+        "role": "user",
+        "text": "menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761393931.6920397,
+        "role": "user",
+        "text": "menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761393966.3621578,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761393981.9047549,
+        "role": "user",
+        "text": "Ver el menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761393990.6565409,
+        "role": "user",
+        "text": "Que precios manejan",
+        "meta": {}
+      },
+      {
+        "ts": 1761394002.8303099,
+        "role": "user",
+        "text": "Precios",
+        "meta": {}
+      },
+      {
+        "ts": 1761394012.2793818,
+        "role": "user",
+        "text": "Qué horario tienen",
+        "meta": {}
+      },
+      {
+        "ts": 1761394225.9539056,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761394243.1747043,
+        "role": "user",
+        "text": "Ver el menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761394248.9423952,
+        "role": "user",
+        "text": "Menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761394258.2237096,
+        "role": "user",
+        "text": "Ver el menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761394322.189012,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761394332.4008932,
+        "role": "user",
+        "text": "Ver el menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761394339.5730388,
+        "role": "user",
+        "text": "Quiero ver el menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761394347.5277417,
+        "role": "user",
+        "text": "Me gustaría ver el menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761394362.7096078,
+        "role": "user",
+        "text": "5",
+        "meta": {}
+      },
+      {
+        "ts": 1761395142.0733385,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761395152.5649147,
+        "role": "user",
+        "text": "Qué horario manejan",
+        "meta": {}
+      },
+      {
+        "ts": 1761395152.9622173,
+        "role": "user",
+        "text": "Qué horario manejan",
+        "meta": {}
+      },
+      {
+        "ts": 1761395153.418572,
+        "role": "user",
+        "text": "Qué horario manejan",
+        "meta": {}
+      },
+      {
+        "ts": 1761395153.880766,
+        "role": "user",
+        "text": "Qué horario manejan",
+        "meta": {}
+      },
+      {
+        "ts": 1761395174.5220196,
+        "role": "user",
+        "text": "Qué horario manejan",
+        "meta": {}
+      },
+      {
+        "ts": 1761395343.8969877,
+        "role": "user",
+        "text": "Qué horario manejan",
+        "meta": {}
+      },
+      {
+        "ts": 1761395363.5138693,
+        "role": "user",
+        "text": "Y qué precio tienen",
+        "meta": {}
+      },
+      {
+        "ts": 1761395371.6282067,
+        "role": "user",
+        "text": "Precios",
+        "meta": {}
+      },
+      {
+        "ts": 1761395400.9349089,
+        "role": "user",
+        "text": "Dónde están ubicados",
+        "meta": {}
+      },
+      {
+        "ts": 1761395514.0256138,
+        "role": "user",
+        "text": "Precios",
+        "meta": {}
+      },
+      {
+        "ts": 1761395635.0657024,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761395650.1147282,
+        "role": "user",
+        "text": "Que precios tienen",
+        "meta": {}
+      },
+      {
+        "ts": 1761396834.9193313,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761396857.2898495,
+        "role": "user",
+        "text": "Dónde están ubicados",
+        "meta": {}
+      },
+      {
+        "ts": 1761396912.6621778,
+        "role": "user",
+        "text": "Quiero ver el catálogo",
+        "meta": {}
+      },
+      {
+        "ts": 1761397133.4915648,
+        "role": "user",
+        "text": "Que puedes hacer",
+        "meta": {}
+      },
+      {
+        "ts": 1761398587.4116936,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761398652.5757885,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761398669.5004978,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761398725.062296,
+        "role": "user",
+        "text": "Si dame el menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761398745.0375812,
+        "role": "user",
+        "text": "Menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761398789.022385,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761398817.0029047,
+        "role": "user",
+        "text": "Hi",
+        "meta": {}
+      },
+      {
+        "ts": 1761398838.2599168,
+        "role": "user",
+        "text": "Quiero ver el catálogo",
+        "meta": {}
+      },
+      {
+        "ts": 1761398999.0065439,
+        "role": "user",
+        "text": "Que puede hacer",
+        "meta": {}
+      },
+      {
+        "ts": 1761399028.819929,
+        "role": "user",
+        "text": "Qué horario manejan ?",
+        "meta": {}
+      },
+      {
+        "ts": 1761399065.2245157,
+        "role": "user",
+        "text": "Haap",
+        "meta": {}
+      },
+      {
+        "ts": 1761399071.4025679,
+        "role": "user",
+        "text": "Has",
+        "meta": {}
+      },
+      {
+        "ts": 1761399077.581251,
+        "role": "user",
+        "text": "No",
+        "meta": {}
+      },
+      {
+        "ts": 1761399193.2946558,
+        "role": "user",
+        "text": "No",
+        "meta": {}
+      },
+      {
+        "ts": 1761399347.36902,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761399377.3867533,
+        "role": "user",
+        "text": "No",
+        "meta": {}
+      },
+      {
+        "ts": 1761399420.795151,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761399432.2829022,
+        "role": "user",
+        "text": "No",
+        "meta": {}
+      },
+      {
+        "ts": 1761399589.6379316,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761399606.4136224,
+        "role": "user",
+        "text": "Ok",
+        "meta": {}
+      },
+      {
+        "ts": 1761399622.9946036,
+        "role": "user",
+        "text": "No",
+        "meta": {}
+      },
+      {
+        "ts": 1761399636.1297224,
+        "role": "user",
+        "text": "Si ver el menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761400042.616199,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      }
+    ],
+    "last_active": 1761400042.6162047
+  },
+  "15556370335|573043646043": {
+    "history": [
+      {
+        "ts": 1761378614.1387346,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761378636.8158634,
+        "role": "user",
+        "text": "Me gustaría saber sobre si horario",
+        "meta": {}
+      },
+      {
+        "ts": 1761378903.3423193,
+        "role": "user",
+        "text": "Y que precios manejas",
+        "meta": {}
+      }
+    ],
+    "last_active": 1761378903.342321
+  },
+  "g1|f1": {
+    "history": [
+      {
+        "ts": 1761384290.3929362,
+        "role": "user",
+        "text": "abrirr tiket",
+        "meta": {}
+      },
+      {
+        "ts": 1761384290.4242477,
+        "role": "bot",
+        "text": "[Ticket creado]",
+        "meta": {
+          "state": "ticket_created"
+        }
+      },
+      {
+        "ts": 1761384623.5147467,
+        "role": "user",
+        "text": "abrirr tiket",
+        "meta": {}
+      }
+    ],
+    "last_active": 1761384623.5147483
+  },
+  "g1|f2": {
+    "history": [
+      {
+        "ts": 1761384290.493727,
+        "role": "user",
+        "text": "men",
+        "meta": {}
+      },
+      {
+        "ts": 1761384623.5393958,
+        "role": "user",
+        "text": "men",
+        "meta": {}
+      }
+    ],
+    "last_active": 1761384623.539398
+  },
+  "g1|test_user": {
+    "history": [
+      {
+        "ts": 1761384714.9411292,
+        "role": "user",
+        "text": "Quiero ver el catálogo",
+        "meta": {}
+      },
+      {
+        "ts": 1761384714.9718213,
+        "role": "user",
+        "text": "Me gustaría ver el catálogo",
+        "meta": {}
+      },
+      {
+        "ts": 1761384714.989843,
+        "role": "user",
+        "text": "Qué bueno sería ver el catálogo",
+        "meta": {}
+      },
+      {
+        "ts": 1761384715.0090985,
+        "role": "user",
+        "text": "Que bien",
+        "meta": {}
+      },
+      {
+        "ts": 1761384715.0272896,
+        "role": "user",
+        "text": "Perfecto",
+        "meta": {}
+      },
+      {
+        "ts": 1761385879.9735804,
+        "role": "user",
+        "text": "/start",
+        "meta": {}
+      }
+    ],
+    "last_active": 1761385879.9735818
+  },
+  "g1|debug_user": {
+    "history": [
+      {
+        "ts": 1761391970.122662,
+        "role": "user",
+        "text": "Quiero ver el catálogo",
+        "meta": {}
+      },
+      {
+        "ts": 1761391970.1626098,
+        "role": "user",
+        "text": "ver catálogo",
+        "meta": {}
+      },
+      {
+        "ts": 1761391970.185304,
+        "role": "user",
+        "text": "productos",
+        "meta": {}
+      },
+      {
+        "ts": 1761391970.2251697,
+        "role": "user",
+        "text": "historial",
+        "meta": {}
+      },
+      {
+        "ts": 1761391970.262249,
+        "role": "user",
+        "text": "ver historial",
+        "meta": {}
+      },
+      {
+        "ts": 1761391970.2841582,
+        "role": "user",
+        "text": "abrir ticket",
+        "meta": {}
+      },
+      {
+        "ts": 1761391970.3100228,
+        "role": "user",
+        "text": "tengo un problema",
+        "meta": {}
+      },
+      {
+        "ts": 1761391970.3489587,
+        "role": "bot",
+        "text": "[Ticket creado]",
+        "meta": {
+          "state": "ticket_created"
+        }
+      },
+      {
+        "ts": 1761391970.3669546,
+        "role": "user",
+        "text": "hablar con agente",
+        "meta": {}
+      },
+      {
+        "ts": 1761391970.3894768,
+        "role": "user",
+        "text": "asesor",
+        "meta": {}
+      },
+      {
+        "ts": 1761391970.4101932,
+        "role": "user",
+        "text": "gracias",
+        "meta": {}
+      },
+      {
+        "ts": 1761391970.4326375,
+        "role": "user",
+        "text": "perfecto",
+        "meta": {}
+      },
+      {
+        "ts": 1761391970.4544768,
+        "role": "user",
+        "text": "excelente",
+        "meta": {}
+      },
+      {
+        "ts": 1761391970.4746792,
+        "role": "user",
+        "text": "esto no lo entiende",
+        "meta": {}
+      },
+      {
+        "ts": 1761392018.432047,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761392019.4605734,
+        "role": "user",
+        "text": "buenas",
+        "meta": {}
+      },
+      {
+        "ts": 1761392020.501919,
+        "role": "user",
+        "text": "inicio",
+        "meta": {}
+      },
+      {
+        "ts": 1761392020.5238707,
+        "role": "user",
+        "text": "empezar",
+        "meta": {}
+      },
+      {
+        "ts": 1761392020.543849,
+        "role": "user",
+        "text": "Menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761392020.5695088,
+        "role": "user",
+        "text": "Ver menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761392020.5954428,
+        "role": "user",
+        "text": "Quiero ver el menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761392020.6177597,
+        "role": "user",
+        "text": "opciones",
+        "meta": {}
+      },
+      {
+        "ts": 1761392020.644219,
+        "role": "user",
+        "text": "Quiero ver el catálogo",
+        "meta": {}
+      },
+      {
+        "ts": 1761392020.6712596,
+        "role": "user",
+        "text": "ver catálogo",
+        "meta": {}
+      },
+      {
+        "ts": 1761392020.695922,
+        "role": "user",
+        "text": "productos",
+        "meta": {}
+      },
+      {
+        "ts": 1761392020.719462,
+        "role": "user",
+        "text": "historial",
+        "meta": {}
+      },
+      {
+        "ts": 1761392020.7416823,
+        "role": "user",
+        "text": "ver historial",
+        "meta": {}
+      },
+      {
+        "ts": 1761392020.7656317,
+        "role": "user",
+        "text": "abrir ticket",
+        "meta": {}
+      },
+      {
+        "ts": 1761392020.7871714,
+        "role": "user",
+        "text": "tengo un problema",
+        "meta": {}
+      },
+      {
+        "ts": 1761392020.8108351,
+        "role": "bot",
+        "text": "[Ticket creado]",
+        "meta": {
+          "state": "ticket_created"
+        }
+      },
+      {
+        "ts": 1761392020.8296769,
+        "role": "user",
+        "text": "hablar con agente",
+        "meta": {}
+      },
+      {
+        "ts": 1761392020.853015,
+        "role": "user",
+        "text": "asesor",
+        "meta": {}
+      },
+      {
+        "ts": 1761392020.8745775,
+        "role": "user",
+        "text": "gracias",
+        "meta": {}
+      },
+      {
+        "ts": 1761392020.897586,
+        "role": "user",
+        "text": "perfecto",
+        "meta": {}
+      },
+      {
+        "ts": 1761392020.920174,
+        "role": "user",
+        "text": "excelente",
+        "meta": {}
+      },
+      {
+        "ts": 1761392020.9411838,
+        "role": "user",
+        "text": "esto no lo entiende",
+        "meta": {}
+      },
+      {
+        "ts": 1761392214.7573345,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761392215.7835593,
+        "role": "user",
+        "text": "buenas",
+        "meta": {}
+      },
+      {
+        "ts": 1761392216.8209631,
+        "role": "user",
+        "text": "inicio",
+        "meta": {}
+      },
+      {
+        "ts": 1761392216.8436563,
+        "role": "user",
+        "text": "empezar",
+        "meta": {}
+      },
+      {
+        "ts": 1761392216.8637784,
+        "role": "user",
+        "text": "Menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761392216.888771,
+        "role": "user",
+        "text": "Ver menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761392216.9080708,
+        "role": "user",
+        "text": "Quiero ver el menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761392216.930621,
+        "role": "user",
+        "text": "opciones",
+        "meta": {}
+      },
+      {
+        "ts": 1761392216.953082,
+        "role": "user",
+        "text": "Quiero ver el catálogo",
+        "meta": {}
+      },
+      {
+        "ts": 1761392216.976951,
+        "role": "user",
+        "text": "ver catálogo",
+        "meta": {}
+      },
+      {
+        "ts": 1761392217.000598,
+        "role": "user",
+        "text": "productos",
+        "meta": {}
+      },
+      {
+        "ts": 1761392217.0247872,
+        "role": "user",
+        "text": "historial",
+        "meta": {}
+      },
+      {
+        "ts": 1761392217.0485368,
+        "role": "user",
+        "text": "ver historial",
+        "meta": {}
+      },
+      {
+        "ts": 1761392217.0693977,
+        "role": "user",
+        "text": "abrir ticket",
+        "meta": {}
+      },
+      {
+        "ts": 1761392217.0928807,
+        "role": "user",
+        "text": "tengo un problema",
+        "meta": {}
+      },
+      {
+        "ts": 1761392217.1158605,
+        "role": "bot",
+        "text": "[Ticket creado]",
+        "meta": {
+          "state": "ticket_created"
+        }
+      },
+      {
+        "ts": 1761392217.1349766,
+        "role": "user",
+        "text": "hablar con agente",
+        "meta": {}
+      },
+      {
+        "ts": 1761392217.1602936,
+        "role": "user",
+        "text": "asesor",
+        "meta": {}
+      },
+      {
+        "ts": 1761392217.1812022,
+        "role": "user",
+        "text": "gracias",
+        "meta": {}
+      },
+      {
+        "ts": 1761392217.2021267,
+        "role": "user",
+        "text": "perfecto",
+        "meta": {}
+      },
+      {
+        "ts": 1761392217.2245493,
+        "role": "user",
+        "text": "excelente",
+        "meta": {}
+      },
+      {
+        "ts": 1761392217.247827,
+        "role": "user",
+        "text": "esto no lo entiende",
+        "meta": {}
+      },
+      {
+        "ts": 1761392603.7991443,
+        "role": "user",
+        "text": "/start",
+        "meta": {}
+      },
+      {
+        "ts": 1761392604.834355,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761392605.8793046,
+        "role": "user",
+        "text": "men",
+        "meta": {}
+      },
+      {
+        "ts": 1761392619.459161,
+        "role": "user",
+        "text": "/start",
+        "meta": {}
+      },
+      {
+        "ts": 1761392620.4862552,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761392621.5212297,
+        "role": "user",
+        "text": "men",
+        "meta": {}
+      },
+      {
+        "ts": 1761392768.9925456,
+        "role": "user",
+        "text": "Ver menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761392769.0136666,
+        "role": "user",
+        "text": "Ver el menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761392769.0361567,
+        "role": "user",
+        "text": "Ver menu",
+        "meta": {}
+      },
+      {
+        "ts": 1761392769.0582042,
+        "role": "user",
+        "text": "Menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761392769.09657,
+        "role": "user",
+        "text": "menu",
+        "meta": {}
+      },
+      {
+        "ts": 1761392769.1207845,
+        "role": "user",
+        "text": "Quiero ver el menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761392769.1434932,
+        "role": "user",
+        "text": "mostrar menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761392769.1660569,
+        "role": "user",
+        "text": "opciones",
+        "meta": {}
+      },
+      {
+        "ts": 1761392769.1908047,
+        "role": "user",
+        "text": "Menú por favor",
+        "meta": {}
+      },
+      {
+        "ts": 1761393161.5099075,
+        "role": "user",
+        "text": "Ver menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761393161.5303087,
+        "role": "user",
+        "text": "Ver el menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761393161.549675,
+        "role": "user",
+        "text": "Ver menu",
+        "meta": {}
+      },
+      {
+        "ts": 1761393161.5697055,
+        "role": "user",
+        "text": "Menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761393161.5925868,
+        "role": "user",
+        "text": "menu",
+        "meta": {}
+      },
+      {
+        "ts": 1761393161.615608,
+        "role": "user",
+        "text": "Quiero ver el menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761393161.6477892,
+        "role": "user",
+        "text": "mostrar menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761393161.67035,
+        "role": "user",
+        "text": "opciones",
+        "meta": {}
+      },
+      {
+        "ts": 1761393161.6960077,
+        "role": "user",
+        "text": "Menú por favor",
+        "meta": {}
+      },
+      {
+        "ts": 1761393359.895822,
+        "role": "user",
+        "text": "Ver menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761393359.9177444,
+        "role": "user",
+        "text": "Ver el menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761393359.9376898,
+        "role": "user",
+        "text": "Ver menu",
+        "meta": {}
+      },
+      {
+        "ts": 1761393359.9580133,
+        "role": "user",
+        "text": "Menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761393359.9793315,
+        "role": "user",
+        "text": "menu",
+        "meta": {}
+      },
+      {
+        "ts": 1761393359.9999592,
+        "role": "user",
+        "text": "Quiero ver el menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761393360.0239785,
+        "role": "user",
+        "text": "mostrar menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761393360.0454192,
+        "role": "user",
+        "text": "opciones",
+        "meta": {}
+      },
+      {
+        "ts": 1761393360.0665317,
+        "role": "user",
+        "text": "Menú por favor",
+        "meta": {}
+      },
+      {
+        "ts": 1761393542.6453068,
+        "role": "user",
+        "text": "Ver menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761393542.6653788,
+        "role": "user",
+        "text": "Ver el menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761393542.6847374,
+        "role": "user",
+        "text": "Ver menu",
+        "meta": {}
+      },
+      {
+        "ts": 1761393542.706775,
+        "role": "user",
+        "text": "Menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761393542.7282045,
+        "role": "user",
+        "text": "menu",
+        "meta": {}
+      },
+      {
+        "ts": 1761393542.750561,
+        "role": "user",
+        "text": "Quiero ver el menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761393542.7707822,
+        "role": "user",
+        "text": "mostrar menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761393542.7904878,
+        "role": "user",
+        "text": "opciones",
+        "meta": {}
+      },
+      {
+        "ts": 1761393542.8106775,
+        "role": "user",
+        "text": "Menú por favor",
+        "meta": {}
+      }
+    ],
+    "last_active": 1761393542.810682
+  },
+  "g1|smoke": {
+    "history": [
+      {
+        "ts": 1761393755.4643664,
+        "role": "user",
+        "text": "abrirr tiket",
+        "meta": {}
+      },
+      {
+        "ts": 1761393755.4852226,
+        "role": "user",
+        "text": "ver menu",
+        "meta": {}
+      },
+      {
+        "ts": 1761393755.5376241,
+        "role": "user",
+        "text": "hablar con agente",
+        "meta": {}
+      },
+      {
+        "ts": 1761393755.573795,
+        "role": "user",
+        "text": "planes",
+        "meta": {}
+      },
+      {
+        "ts": 1761393755.6082077,
+        "role": "user",
+        "text": "men",
+        "meta": {}
+      },
+      {
+        "ts": 1761394266.6528103,
+        "role": "user",
+        "text": "abrirr tiket",
+        "meta": {}
+      },
+      {
+        "ts": 1761394266.6768942,
+        "role": "user",
+        "text": "ver menu",
+        "meta": {}
+      },
+      {
+        "ts": 1761394266.7138052,
+        "role": "bot",
+        "text": "[Ticket creado]",
+        "meta": {
+          "state": "ticket_created"
+        }
+      },
+      {
+        "ts": 1761394266.7318482,
+        "role": "user",
+        "text": "hablar con agente",
+        "meta": {}
+      },
+      {
+        "ts": 1761394266.7553673,
+        "role": "user",
+        "text": "planes",
+        "meta": {}
+      },
+      {
+        "ts": 1761394266.7804096,
+        "role": "user",
+        "text": "men",
+        "meta": {}
+      },
+      {
+        "ts": 1761395243.4539793,
+        "role": "user",
+        "text": "abrirr tiket",
+        "meta": {}
+      },
+      {
+        "ts": 1761395243.4799745,
+        "role": "user",
+        "text": "ver menu",
+        "meta": {}
+      },
+      {
+        "ts": 1761395243.5146084,
+        "role": "bot",
+        "text": "[Ticket creado]",
+        "meta": {
+          "state": "ticket_created"
+        }
+      },
+      {
+        "ts": 1761395243.5316496,
+        "role": "user",
+        "text": "hablar con agente",
+        "meta": {}
+      },
+      {
+        "ts": 1761395243.566404,
+        "role": "user",
+        "text": "planes",
+        "meta": {}
+      },
+      {
+        "ts": 1761395243.5864258,
+        "role": "user",
+        "text": "men",
+        "meta": {}
+      },
+      {
+        "ts": 1761395306.7465289,
+        "role": "user",
+        "text": "abrirr tiket",
+        "meta": {}
+      },
+      {
+        "ts": 1761395306.7756603,
+        "role": "user",
+        "text": "ver menu",
+        "meta": {}
+      },
+      {
+        "ts": 1761395306.7982473,
+        "role": "bot",
+        "text": "[Ticket creado]",
+        "meta": {
+          "state": "ticket_created"
+        }
+      },
+      {
+        "ts": 1761395306.815459,
+        "role": "user",
+        "text": "hablar con agente",
+        "meta": {}
+      },
+      {
+        "ts": 1761395306.8373797,
+        "role": "user",
+        "text": "planes",
+        "meta": {}
+      },
+      {
+        "ts": 1761395306.8590512,
+        "role": "user",
+        "text": "men",
+        "meta": {}
+      },
+      {
+        "ts": 1761395570.4469917,
+        "role": "user",
+        "text": "horario",
+        "meta": {}
+      },
+      {
+        "ts": 1761395570.4671068,
+        "role": "user",
+        "text": "¿a qué hora abren?",
+        "meta": {}
+      },
+      {
+        "ts": 1761395570.4869285,
+        "role": "user",
+        "text": "dónde están ubicados",
+        "meta": {}
+      },
+      {
+        "ts": 1761395570.5070431,
+        "role": "user",
+        "text": "precios",
+        "meta": {}
+      },
+      {
+        "ts": 1761395570.52811,
+        "role": "user",
+        "text": "¿cuánto cuesta?",
+        "meta": {}
+      },
+      {
+        "ts": 1761395570.548724,
+        "role": "user",
+        "text": "envíos",
+        "meta": {}
+      },
+      {
+        "ts": 1761395570.5697043,
+        "role": "user",
+        "text": "formas de pago",
+        "meta": {}
+      },
+      {
+        "ts": 1761395570.5883338,
+        "role": "user",
+        "text": "devoluciones",
+        "meta": {}
+      },
+      {
+        "ts": 1761395570.6089728,
+        "role": "user",
+        "text": "novedades",
+        "meta": {}
+      },
+      {
+        "ts": 1761395570.632334,
+        "role": "user",
+        "text": "contacto",
+        "meta": {}
+      },
+      {
+        "ts": 1761395570.6520507,
+        "role": "user",
+        "text": "quiénes son",
+        "meta": {}
+      },
+      {
+        "ts": 1761395570.6778324,
+        "role": "user",
+        "text": "redes sociales",
+        "meta": {}
+      },
+      {
+        "ts": 1761396064.830154,
+        "role": "user",
+        "text": "horario",
+        "meta": {}
+      },
+      {
+        "ts": 1761396064.8570592,
+        "role": "user",
+        "text": "¿a qué hora abren?",
+        "meta": {}
+      },
+      {
+        "ts": 1761396064.8795712,
+        "role": "user",
+        "text": "dónde están ubicados",
+        "meta": {}
+      },
+      {
+        "ts": 1761396064.9017575,
+        "role": "user",
+        "text": "precios",
+        "meta": {}
+      },
+      {
+        "ts": 1761396064.9243236,
+        "role": "user",
+        "text": "¿cuánto cuesta?",
+        "meta": {}
+      },
+      {
+        "ts": 1761396064.947648,
+        "role": "user",
+        "text": "envíos",
+        "meta": {}
+      },
+      {
+        "ts": 1761396064.9721224,
+        "role": "user",
+        "text": "formas de pago",
+        "meta": {}
+      },
+      {
+        "ts": 1761396064.9962745,
+        "role": "user",
+        "text": "devoluciones",
+        "meta": {}
+      },
+      {
+        "ts": 1761396065.0203753,
+        "role": "user",
+        "text": "novedades",
+        "meta": {}
+      },
+      {
+        "ts": 1761396065.0426207,
+        "role": "user",
+        "text": "contacto",
+        "meta": {}
+      },
+      {
+        "ts": 1761396065.0658126,
+        "role": "user",
+        "text": "quiénes son",
+        "meta": {}
+      },
+      {
+        "ts": 1761396065.091591,
+        "role": "user",
+        "text": "redes sociales",
+        "meta": {}
+      }
+    ],
+    "last_active": 1761396065.091592
   }
 }

@@ -8,6 +8,8 @@ Se actualiza automáticamente vía pre-commit. No editar manualmente.
 │   ├── workflows
 │   │   └── ci.yml
 │   └── dependabot.yml
+├── .vscode
+│   └── settings.json
 ├── ci
 │   └── pipeline.yml
 ├── config
@@ -29,8 +31,10 @@ Se actualiza automáticamente vía pre-commit. No editar manualmente.
 │   ├── deployment.md
 │   ├── estructura.md
 │   ├── faq.md
+│   ├── faq_config.md
 │   ├── rules_reference.md
 │   ├── webchat_api.md
+│   ├── whatsapp_ngrok_setup.md
 │   ├── whatsapp_setup.md
 │   └── windows_guide.md
 ├── examples
@@ -40,9 +44,13 @@ Se actualiza automáticamente vía pre-commit. No editar manualmente.
 │   └── docker
 │       └── Dockerfile
 ├── scripts
+│   ├── debug_whatsapp_flow.py
 │   ├── generate_tree.py
 │   ├── nlu_info.py
+│   ├── simulate_whatsapp_connector.py
+│   ├── smoke_faq_bot.py
 │   ├── smoke_nlu.py
+│   ├── test_faq_match.py
 │   └── train_nlu.py
 ├── src
 │   ├── app
@@ -89,6 +97,7 @@ Se actualiza automáticamente vía pre-commit. No editar manualmente.
 ├── tests
 │   ├── integration
 │   ├── unit
+│   │   ├── test_bot_capabilities.py
 │   │   ├── test_conversation_repository.py
 │   │   ├── test_duration_parser.py
 │   │   ├── test_generate_tree.py
@@ -110,6 +119,7 @@ Se actualiza automáticamente vía pre-commit. No editar manualmente.
 ├── DESCRIPCION_BOT
 ├── lanzar_bot.bat
 ├── LICENSE
+├── payload.json
 ├── pyproject.toml
 ├── pytest.ini
 ├── README.md

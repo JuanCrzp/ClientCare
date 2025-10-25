@@ -402,6 +402,8 @@ Licencia Apache-2.0. Ver archivo `LICENSE`.
 - [`docs/whatsapp_setup.md`](docs/whatsapp_setup.md): Configuración WhatsApp Cloud API
 - [`docs/webchat_api.md`](docs/webchat_api.md): API de Webchat y ejemplos
 - [`docs/faq.md`](docs/faq.md): Troubleshooting / preguntas frecuentes
+- [`docs/faq.md`](docs/faq.md): Troubleshooting / preguntas frecuentes
+- [`docs/faq_config.md`](docs/faq_config.md): Configuración avanzada del FAQ dinámico y la plantilla `{auto}` (nuevo)
 - [`config/rules.yaml`](config/rules.yaml): Todas las reglas y flujos
 
 ---

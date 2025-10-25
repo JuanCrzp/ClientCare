@@ -19,11 +19,16 @@ default:
   greeting_force_on_first_message: true
   # Mostrar un prompt en el saludo para ofrecer el menú solo si se solicita (cuando los menús estén habilitados)
   greeting_menu_prompt_enabled: true
-  greeting_menu_prompt_text: "Si necesitas ver las opciones, dime 'menú' y te las envío."
+  greeting_menu_prompt_text: "Cuéntame, ¿en qué te puedo ayudar hoy?😎 
+
+  
+   Si quieres, también puedo mandarte el menú con todas las opciones disponibles."
+  # Segundos de retraso entre el saludo y el mensaje de prompt (float o int)
+  greeting_menu_prompt_delay: 2
   greeting_ttl_days: 7          # Repetir saludo automáticamente después de N días (0 = nunca repetir)
   greeting_text: |               # Puedes personalizar este saludo. Si greeting_enabled es false, no se muestra.
-    ¡Hola {user}! Soy tu asistente virtual de atención al cliente. Estoy aquí para ayudarte.
-  fallback_text: "No entendí tu mensaje. Escribe /start para ver el menú." # Respuesta por defecto si no se reconoce la entrada
+    ¡Hola Bienvenid@ a Urban elegance ! Soy tu asistente virtual.
+  fallback_text: "No entendí tu mensaje. dime si quieres ver las opciones del menú." # Respuesta por defecto si no se reconoce la entrada
 
   # =============================
   # Memoria conversacional (historial y temas)
@@ -69,6 +74,9 @@ default:
     faq:
       enabled: true              # Respuestas automáticas de FAQ
       not_found_message: "No encontré esa pregunta en el FAQ. ¿Quieres crear un ticket?"
+      # Umbral de similitud para considerar que un mensaje es una pregunta del FAQ.
+      # Valor entre 0.0 y 1.0 (mayor = más estricto). Ejemplo: 0.75
+      match_threshold: 0.75
     tickets:
       enabled: true              # Gestión de tickets
       category_options: ["general", "facturacion", "tecnico"]
@@ -76,6 +84,19 @@ default:
     escalation:
       enabled: true              # Escalamiento a agente humano
       request_contact_fields: ["nombre", "correo"]
+
+  # =============================
+  # Catálogo configurable
+  # Puedes poner el link de tu catálogo aquí y cambiar el texto que verá el usuario.
+  catalog:
+    enabled: true
+    link: "https://drive.google.com/drive/folders/1AJG-4rTitxN8usuNeYy2gO9RZgSQ8VD1"
+    # Mensaje final mostrado al usuario (editable desde aquí). Mantener el link sólo en este bloque.
+    message: "Puedes ver nuestro catálogo completo aquí: https://drive.google.com/drive/folders/1AJG-4rTitxN8usuNeYy2gO9RZgSQ8VD1"
+
+  # Redes sociales y contactos (configurable por el usuario)
+  socials:
+    instagram: "https://www.instagram.com/urban.elegance2.0?igsh=dXc0Z2Z1bmNpM2xo"
 
 
   # =============================
@@ -101,36 +122,65 @@ default:
   # Para ocultar un menú o una opción, usa 'enabled: false'.
   # Ejemplo: para ocultar el submenú ventas_menu, pon 'enabled: false' en ese bloque.
   menus:
-    enabled: true                # Habilita/Deshabilita completamente el sistema de menús (si false, no se menciona en el saludo)
+    enabled: true
     root: main
     items:
       main:
         text: |
-          Menú principal:
-          1) Preguntas frecuentes
-          2) Crear ticket
-          3) Hablar con agente
-          9) Volver (si aplica)
-        # Opciones del menú principal. Puedes agregar, quitar o desactivar (enabled: false) cualquier opción.
+          ¿Cómo podemos ayudarte hoy?
+
+          1️⃣ Información de productos y precios
+          2️⃣ Soporte técnico y reclamos
+          3️⃣ Estado de mi pedido o ticket
+          4️⃣ Hablar con un asesor humano
+          5️⃣ Catálogo y productos
+          9️⃣ Ver más opciones
         options:
-          - triggers: ["1", "faq", "preguntas"] # Palabras o números que activan esta opción
-            action: goto         # Acción: ir a otro menú
-            target: faq_menu     # ID del submenú destino
-            enabled: true        # Si pones false, la opción no aparece ni responde
-          - triggers: ["2", "ticket", "soporte", "reclamo"]
-            action: ticket_ask_detail # Acción: iniciar flujo de ticket
+          - triggers: ["1", "productos", "precios", "catálogo", "faq"]
+            action: goto
+            target: faq_menu
             enabled: true
-          - triggers: ["3", "agente", "humano", "asesor"]
-            action: escalation   # Acción: derivar a agente humano
+          - triggers: ["2", "soporte", "reclamo", "ticket", "problema", "crear ticket"]
+            action: ticket_ask_detail
+            enabled: true
+          - triggers: ["3", "estado", "pedido", "consultar ticket", "ver ticket"]
+            action: consultar_ticket
+            enabled: true
+          - triggers: ["4", "asesor", "humano", "agente", "hablar con agente"]
+            action: escalation
+            enabled: true
+          - triggers: ["9", "más", "opciones", "menu"]
+            action: goto
+            target: extra_menu
+            enabled: true
+          - triggers: ["5", "catalogo", "catálogo", "productos"]
+            action: reply
+            # Respuesta amable y profesional para el catálogo. Edita `default.catalog.link` si quieres cambiar la URL.
+            reply_text: "¡Genial! {catalog.message}\n\nSi quieres, puedo enviarte novedades o promociones cuando salgan. ¿Te interesa recibir alertas?"
             enabled: true
       faq_menu:
         text: |
-          Submenú FAQ:
-          - Escribe una palabra clave como "precios", "planes", "demo".
-          - Escribe 9 o "menu" para volver.
-        # Opciones del submenú FAQ
+          Pregúntame sobre cualquier tema: precios, productos, catálogo, envíos, pagos, devoluciones...
+          Escribe 9 o 'menú' para volver al menú principal.
         options:
-          - triggers: ["9", "menu", "volver", "back"] # Palabras/números para volver atrás
+          - triggers: ["9", "menu", "volver", "back"]
+            action: back
+      extra_menu:
+        text: |
+          Otras opciones:
+          1️⃣ Información de la empresa
+          2️⃣ Formas de pago y envíos
+          9️⃣ Volver al menú principal
+        options:
+          - triggers: ["1", "empresa", "quiénes son"]
+            action: goto
+            target: faq_menu
+            enabled: true
+          - triggers: ["2", "pago", "envíos", "formas de pago"]
+            action: goto
+            target: faq_menu
+            enabled: true
+          - triggers: ["9", "volver", "menu"]
             action: back
 
   # =============================
@@ -140,13 +190,9 @@ default:
   nlu:
     greetings:
       enabled: true
-      # Palabras que disparan el saludo + menú (usa minúsculas)
       triggers: ["/start", "hola", "buenas", "hello", "hi", "hey", "menu"]
-    # Umbral de confianza para aceptar una intención (0-1)
     threshold: 0.78
-    # Mensaje para orientar al usuario cuando hay una coincidencia pero por debajo del umbral
     low_confidence_message: "Para ayudarte mejor puedo: mostrar el menú, crear un ticket o derivarte a un agente. ¿Qué prefieres?"
-    # Proveedor NLU: "simple" (fuzzy por patrones) o "ml" (Naive Bayes n-gramas)
     provider: ml
     ml:
       retrain_on_start: false        # true para reentrenar en cada arranque (dev)
@@ -177,6 +223,15 @@ default:
         patterns: ["faq", "preguntas", "precios", "planes", "información", "informacion"]
         action: goto
         target: faq_menu
+      - name: ver_catalogo
+        patterns: ["catalogo", "catálogo", "ver catálogo", "ver el catálogo", "quiero ver el catálogo", "productos", "ver productos", "me gustaría ver el catálogo", "me gustaria ver el catalogo"]
+        action: reply
+        # Respuesta más formal y profesional. Usa {catalog.link} o {catalog.message} según prefieras.
+        reply_text: "Perfecto. Puede ver nuestro catálogo completo aquí: {catalog.link}\n\n¿Desea que le envíe novedades o promociones cuando haya lanzamientos?"
+      - name: novedades
+        patterns: ["novedades", "lanzamientos", "nueva colección", "novedad"]
+        action: reply
+        reply_text: "Cada semana publicamos novedades. Puedes ver las últimas aquí: https://tusitio.com/novedades. ¿Deseas que te avise cuando lancemos algo nuevo?"
       - name: consultar_ticket
         patterns: ["ver ticket", "consultar ticket", "estado ticket", "/ticket"]
         action: reply
@@ -185,27 +240,63 @@ default:
         patterns: ["gracias", "muchas gracias", "listo", "hasta luego", "adios", "adiós"]
         action: reply
         reply_text: "¡Con gusto! Si necesitas algo más, estoy aquí para ayudarte."
+      - name: satisfaccion
+        patterns: ["que bien", "está bien", "está bien", "ok", "perfecto", "me gusta", "excelente", "super", "chévere", "listo", "muy bien", "genial", "buenísimo", "aprobado", "funciona", "me encanta"]
+        action: reply
+        # Respuestas en tono formal (usted) para mayor profesionalidad
+        responses:
+          - "Me alegra que le haya resultado útil. Si necesita algo más, con gusto le atiendo."
+          - "Perfecto. Recuerde que puede consultar el menú o solicitar novedades cuando lo desee."
+          - "Excelente. Si tiene otra consulta, por favor indíquemela y con gusto la atenderé."
+          - "Me alegra saberlo. ¿Desea que le envíe el catálogo o información sobre promociones?"
+          - "Gracias por su comentario. Estoy a su disposición para cualquier otra gestión."
   # =============================
   # Base de conocimiento (FAQ)
   # =============================
   # Aquí defines las preguntas y respuestas que el bot usará en el submenú FAQ.
   # Puedes agregar tantas como quieras. El bot busca coincidencias por palabra clave.
   faq:
-    - q: "precios"
-      a: "Nuestros planes comienzan en $X/mes. ¿Quieres que te envíe el link de precios?"
-    - q: "planes"
-      a: "Tenemos Plan Básico, Pro y Enterprise. Puedo ayudarte a elegir según tu caso."
-    - q: "demo"
-      a: "Puedes agendar una demo en https://example.com/demo"
-    - q: "prueba gratis"
-      a: "Ofrecemos 14 días de prueba sin tarjeta. ¿Quieres activarla?"
-    - q: "integración"
-      a: "Ofrecemos SDKs y APIs. Revisa docs en https://example.com/docs"
-    - q: "facturación"
-      a: "La facturación es mensual con tarjeta o transferencia. Podemos emitir factura electrónica."
-    - q: "soporte"
-      a: "Nuestro SLA estándar es de 24h. Para planes Enterprise, SLA dedicado."
+  - q: "¿Qué puedes hacer?"
+    keywords: ["qué puedes hacer", "qué haces", "qué opciones hay", "cómo me puedes ayudar", "ayuda", "servicios", "funcionalidades", "qué ofrece el bot"]
+    a: "{auto}"
+  - q: "horario"
+    keywords: ["horario", "a qué hora abren", "a qué hora cierran", "hasta qué hora", "qué días están abiertos", "horas de atención", "horarios"]
+    a: "Nuestro horario es de lunes a sábado, de 10:00 a.m. a 8:00 p.m. 🕗. Los domingos cerramos para recargar estilo 😎."
+  - q: "ubicación"
+    keywords: ["ubicación", "dónde están", "dónde queda", "cómo los encuentro", "dirección", "localización", "tienda física", "dónde se encuentran"]
+    a: |-
+      Somos una tienda virtual. No contamos con atención presencial, todas las compras y consultas se gestionan a través de nuestra tienda online.
 
+      Puede ver nuestro catálogo si lo pides aquí o contactarnos por nuestra tienda virtual: {socials.instagram}
+
+      Si necesitas conocer opciones de envío a su ciudad, indíquenos su ubicación y con gusto le informamos las alternativas y tiempos de entrega.
+  - q: "precios"
+    keywords: ["precios", "cuánto cuesta", "cuánto valen", "tarifas", "valor", "costos", "cuánto cobran", "cuál es el precio"]
+    a: "Tenemos prendas desde $35 mil. Los precios dependen del modelo y colección 👕. ¿Quieres que te envíe el catálogo completo?"
+  - q: "catálogo"
+    keywords: ["catálogo", "productos", "colección", "ver catálogo", "ver productos", "mostrar catálogo", "mostrar productos"]
+    a: "Puedes ver nuestro catálogo más reciente aquí 👉 {catalog.link}. ¡Todo con flow urbano garantizado!"
+  - q: "envíos"
+    keywords: ["envíos", "envio", "entregas", "a dónde envían", "envían a mi ciudad", "despachos", "cómo envían", "formas de envío"]
+    a: "Hacemos envíos a todo el país 🇨🇴 (o donde apliques). Los pedidos se despachan en 24 a 48 horas."
+  - q: "formas de pago"
+    keywords: ["formas de pago", "cómo pago", "métodos de pago", "puedo pagar con tarjeta", "aceptan nequi", "aceptan daviplata", "transferencia", "cuáles son los métodos de pago"]
+    a: "Aceptamos pagos por Nequi, Daviplata, transferencia bancaria y tarjeta 💳. ¡Tú eliges!"
+  - q: "devoluciones"
+    keywords: ["devoluciones", "cambios", "puedo cambiar", "cómo hago un cambio", "reembolsos", "puedo devolver", "devolver producto"]
+    a: "Aceptamos cambios dentro de los primeros 5 días hábiles después de recibir tu pedido, siempre que la prenda esté en perfecto estado."
+  - q: "novedades"
+    keywords: ["novedades", "nueva colección", "nuevos productos", "lanzamientos", "lo nuevo", "últimas prendas"]
+    a: "Cada semana lanzamos nuevas prendas urbanas 🔥. ¿Quieres que te avise cuando salga la próxima colección?"
+  - q: "contacto"
+    keywords: ["contacto", "cómo los contacto", "whatsapp", "instagram", "cómo hablo con ustedes", "atención al cliente"]
+    a: "Puedes escribirnos directamente por WhatsApp o Instagram 📲. Siempre respondemos rápido."
+  - q: "quiénes son"
+    keywords: ["quiénes son", "quién eres", "sobre ustedes", "quién está detrás", "acerca de", "historia", "quién fundó", "quién es urban elegance"]
+    a: "Somos *Urban Elegance*, una marca de ropa urbana que combina estilo, actitud y elegancia. Diseñamos prendas únicas para quienes marcan tendencia."
+  - q: "redes sociales"
+    keywords: ["redes sociales", "instagram", "tiktok", "facebook", "síguenos", "dónde ver más", "perfil social"]
+    a: "Síguenos en Instagram y TikTok como *@UrbanElegance* para no perderte lo nuevo 💥."
   # =============================
   # Mensajes de cada flujo (tickets, escalación, etc.)
   # =============================
@@ -215,9 +306,10 @@ default:
     thanks_message: "¡Gracias! Un agente te contactará pronto."
   tickets:
     enabled: true
-    message_opened: "He creado tu ticket #{ticket_id}. Te avisaré cualquier actualización."
-    message_status_template: "Ticket #{ticket_id} - estado: {status}"
-    message_ask_detail: "Por favor, cuéntame brevemente el problema."
+    message_ask_detail: "Por favor, describe brevemente el inconveniente o consulta que tienes. Cuanta más información nos des, más rápido podremos ayudarte."
+    message_request_contact: "¿Nos puedes dejar tu correo electrónico o número de pedido para agilizar la gestión?"
+    message_opened: "¡Listo! Hemos registrado tu solicitud con el número #{ticket_id}. Nuestro equipo te contactará pronto."
+    message_status_template: "Ticket #{ticket_id} - Estado actual: {status}"
 
   # =============================
   # Rate limiting (antispam)

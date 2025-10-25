@@ -4,7 +4,11 @@ from src.bot_core.manager import BotManager
 def test_menu_start():
     bot = BotManager()
     res = bot.process_message({"text": "/start", "platform_user_id": "u1", "group_id": "g1"})
-    assert res and "text" in res
+    # Ahora debe devolver 'messages' con saludo y prompt separados
+    assert res and "messages" in res
+    assert len(res["messages"]) >= 2
+    assert "Bienvenid" in res["messages"][0]["text"]
+    assert "menú" in res["messages"][1]["text"]
 
 
 def test_faq_match():
@@ -17,10 +21,11 @@ def test_menu_to_faq_submenu():
     bot = BotManager()
     # Abrir menú principal
     r1 = bot.process_message({"text": "/start", "platform_user_id": "u2", "group_id": "g1"})
-    assert r1 and "text" in r1
+    assert r1 and "messages" in r1
     # Elegir FAQ (opción 1)
     r2 = bot.process_message({"text": "1", "platform_user_id": "u2", "group_id": "g1"})
-    assert r2 and "Submenú" in (r2.get("text") or "")
+    # Ahora el menú FAQ no contiene 'Submenú', validamos que sea el texto esperado
+    assert r2 and "Pregúntame" in (r2.get("text") or "")
     # Consultar algo del FAQ en submenú
     r3 = bot.process_message({"text": "planes", "platform_user_id": "u2", "group_id": "g1"})
     assert r3 and "text" in r3

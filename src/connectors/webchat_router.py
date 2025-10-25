@@ -28,4 +28,7 @@ def post_message(msg: WebchatMessage, _=Depends(_auth)):
         "text": msg.text,
     }
     res = manager.process_message(payload) or {}
+    # Si manager devuelve mensajes múltiples, devolvemos esa estructura para que el cliente la respete
+    if res.get("messages"):
+        return {"ok": True, "response": {"messages": res.get("messages")}}
     return {"ok": True, "response": res}

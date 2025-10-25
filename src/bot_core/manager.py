@@ -1,4 +1,5 @@
 from typing import Dict, Any
+import logging
 from pathlib import Path
 from ..app.config import settings
 from ..storage.state_repository import StateRepository
@@ -9,6 +10,7 @@ from ..handlers.ticket import open_ticket
 from ..handlers.escalation import escalation_message
 from ..handlers.greeting import build_greeting
 from ..nlu.classifier import SimpleNLU, MLNLU
+import random
 from ..utils.duration import parse_duration_to_seconds
 
 _state = StateRepository(Path(settings.data_dir))
@@ -18,6 +20,10 @@ _conv = ConversationRepository(Path(settings.data_dir))
 class BotManager:
     def process_message(self, payload: Dict[str, Any]) -> Dict[str, Any] | None:
         # 1) Entrada y configuración
+        try:
+            logging.info(f"process_message start payload={{user={payload.get('platform_user_id')} chat={payload.get('group_id')} text={str(payload.get('text'))[:80]}}}")
+        except Exception:
+            pass
         text_raw = str(payload.get("text") or "")
         text = text_raw.lower()
         user_id = str(payload.get("platform_user_id") or "")
@@ -27,6 +33,12 @@ class BotManager:
         nlu_cfg = dict(rules.get("nlu") or {})
         synonyms = dict(rules.get("synonyms") or {})
         menus_cfg = dict(rules.get("menus") or {})
+        # Debug: log effective flags used for greeting/menu decision
+        try:
+            gmp_flag = bool(rules.get("greeting_menu_prompt_enabled", True))
+            logging.info(f"rules debug: chat_id={chat_id} greeting_menu_prompt_enabled={gmp_flag} menus_enabled={bool(menus_cfg.get('enabled', True))}")
+        except Exception:
+            pass
         greeting_enabled = bool(rules.get("greeting_enabled", True))
         force_greet_on_first = bool(rules.get("greeting_force_on_first_message", True))
 
@@ -154,10 +166,30 @@ class BotManager:
             it = menu_item(mid) or {}
             return str(it.get("text") or rules.get("menu_text") or "Escribe tu consulta.")
 
+        # Preparar sinónimos del menú para uso en la lógica de prioridad NLU vs menú
+        menu_synonyms = [s.lower() for s in (synonyms.get("menu") or []) if isinstance(s, str)]
+        menu_accept = [s.lower() for s in (synonyms.get("menu_accept") or []) if isinstance(s, str)]
+        is_menu_request = (
+            text.strip() in menu_accept
+            or any(k in text for k in menu_synonyms)
+            or text.strip() == "/start"
+        )
+
         # 2) Estado actual
         st = _state.get(user_id, chat_id)
         state_name = st.get("name") or ""
         state_data = st.get("data") or {}
+
+        # PRIORIDAD: responder FAQs justo después de conocer el estado.
+        # Si hay coincidencia FAQ, respondemos inmediatamente y no procesamos
+        # NLU ni menús. Esto asegura un comportamiento profesional.
+        try:
+            if enabled("faq"):
+                ans = answer_faq(text_raw)
+                if ans:
+                    return {"text": ans}
+        except Exception:
+            logging.exception("Error comprobando FAQ")
 
         # 3) Flujo: completar ticket si está pidiendo detalle
         if state_name == "ticket:ask_detail":
@@ -170,6 +202,54 @@ class BotManager:
             # Si no hay detalle, re-preguntar
             ask = (rules.get("tickets", {}).get("message_ask_detail") or "Por favor, cuéntame brevemente el problema.")
             return {"text": ask}
+
+        # ---------------------------------------------------------------------
+        # NUEVO: Priorizar NLU/intents antes de mostrar menús
+        # Si el usuario no pidió explícitamente el menú (/start o sinónimo),
+        # clasificamos la intención primero y atendemos la intención detectada
+        # con prioridad. Esto hace el flujo más profesional (SaaS-style).
+        # ---------------------------------------------------------------------
+        if not is_menu_request:
+            try:
+                provider_now = str((nlu_cfg.get("provider") or "simple")).lower()
+                from typing import Any as _Any
+                nlu_now: _Any = MLNLU(nlu_cfg, data_dir=settings.data_dir) if provider_now == "ml" else SimpleNLU(nlu_cfg)
+                best_now, score_now = nlu_now.classify(text)
+                if best_now:
+                    intent = best_now.intent_cfg
+                    action = best_now.action
+                    if score_now >= nlu_now.threshold or ((action or "") == "reply" and (intent.get("reply_text") or intent.get("responses"))):
+                        # Ejecutar la misma lógica de acciones que antes (goto, ticket, escalation, reply)
+                        if action == "goto":
+                            target = intent.get("target") or ""
+                            if target and has_dynamic_menus() and menu_item(target):
+                                _state.set(user_id, chat_id, "menu:dyn", {"current": target, "stack": [menu_root_id()]})
+                                return {"text": menu_text(target)}
+                        if action == "ticket_ask_detail" and enabled("tickets"):
+                            _state.set(user_id, chat_id, "ticket:ask_detail")
+                            ask = (rules.get("tickets", {}).get("message_ask_detail") or "Por favor, cuéntame brevemente el problema.")
+                            return {"text": ask}
+                        if action == "escalation" and enabled("escalation"):
+                            _state.clear(user_id, chat_id)
+                            return {"text": escalation_message()}
+                        if action == "reply":
+                            rep = intent.get("reply_text")
+                            if not rep:
+                                res_list = list(intent.get("responses") or [])
+                                if res_list:
+                                    rep = random.choice(res_list)
+                            if not rep:
+                                rep = rules.get("fallback_text", "No entendí tu mensaje.")
+                            return {"text": rep}
+                else:
+                    # Si no hay intención ML aceptada, intentar FAQ rápido
+                    if enabled("faq"):
+                        ans_now = answer_faq(text_raw)
+                        if ans_now:
+                            return {"text": ans_now}
+            except Exception:
+                # No bloquear el flujo si algo falla en NLU
+                pass
 
         # 4) Saludo profesional y detección de solicitud de menú
         # Detectamos explícitamente una petición de menú antes de considerar
@@ -193,41 +273,30 @@ class BotManager:
         # Solo forzar saludo en primer mensaje si parece un saludo corto (no una intención compuesta)
         first_message_greet = force_greet_on_first and is_first_message and (len(text.split()) <= 2)
         if greeting_enabled and (is_greeting_trigger or first_message_greet):
-                # Si es saludo por primer mensaje pero podría haber una intención clara, respetarla
-                if first_message_greet and not is_greeting_trigger:
-                    _provider = str((nlu_cfg.get("provider") or "simple")).lower()
-                    from typing import Any as _Any
-                    _nlu: _Any = MLNLU(nlu_cfg, data_dir=settings.data_dir) if _provider == "ml" else SimpleNLU(nlu_cfg)
-                    _best, _score = _nlu.classify(text)
-                    if _best and _score >= _nlu.threshold and (_best.action in {"goto", "ticket_ask_detail", "escalation"}):
-                        # Hay una intención accionable: no interrumpir con saludo
-                        pass
-                    else:
-                        # Si el menú está habilitado y el trigger fue /start, mostrar el menú; si no, solo saludar
-                        if text.strip() == "/start" and has_dynamic_menus():
-                            cur = menu_root_id()
-                            _state.set(user_id, chat_id, "menu:dyn", {"current": cur, "stack": []})
-                            greet = build_greeting(user_id, chat_id)
-                            if greet:
-                                return {"text": f"{greet}\n\n{menu_text(cur)}"}
-                            return {"text": menu_text(cur)}
-                        else:
-                            greet = build_greeting(user_id, chat_id)
-                            return {"text": greet or rules.get('fallback_text', 'Escribe tu consulta.')}
+            greet = build_greeting(user_id, chat_id)
+            # Si el menú está habilitado y el trigger es saludo o /start, devolver ambos mensajes
+            if has_dynamic_menus() and rules.get("greeting_menu_prompt_enabled", True):
+                cur = menu_root_id()
+                _state.set(user_id, chat_id, "menu:dyn", {"current": cur, "stack": []})
+                follow = rules.get("greeting_menu_prompt_text") or menu_text(cur)
+                if greet:
+                    # Leer el delay desde la configuración (por defecto 5s)
+                    try:
+                        d = float(rules.get("greeting_menu_prompt_delay", 5) or 5)
+                    except Exception:
+                        d = 5.0
+                    return {"messages": [{"text": greet}, {"text": follow, "delay": d}], "text": f"{greet}\n\n{follow}"}
                 else:
-                    if text.strip() == "/start" and has_dynamic_menus():
-                        cur = menu_root_id()
-                        _state.set(user_id, chat_id, "menu:dyn", {"current": cur, "stack": []})
-                        greet = build_greeting(user_id, chat_id)
-                        if greet:
-                            return {"text": f"{greet}\n\n{menu_text(cur)}"}
-                        return {"text": menu_text(cur)}
-                    else:
-                        greet = build_greeting(user_id, chat_id)
-                        return {"text": greet or rules.get('fallback_text', 'Escribe tu consulta.')}
+                    return {"messages": [{"text": follow}], "text": follow}
+            # Si no hay menú dinámico, solo saludar
+            if greet:
+                return {"text": greet}
+            return {"text": rules.get('fallback_text', 'Escribe tu consulta.')}
 
         # 4.b Solicitud explícita de menú tras saludo: si el usuario pide el menú, mostrarlo
-        if state_name == "" and menus_enabled() and is_menu_request:
+        # Permitir que el usuario abra el menú en cualquier estado si lo solicita explícitamente.
+        if menus_enabled() and is_menu_request:
+            logging.info(f"Solicitud explícita de menú: user={user_id} chat={chat_id} state={state_name} text={text_raw[:80]}")
             if has_dynamic_menus():
                 cur = menu_root_id()
                 _state.set(user_id, chat_id, "menu:dyn", {"current": cur, "stack": []})
@@ -276,9 +345,16 @@ class BotManager:
                     _state.clear(user_id, chat_id)
                     return {"text": escalation_message()}
                 if action == "reply":
-                    reply = matched.get("reply_text") or rules.get("fallback_text", "No entendí tu mensaje.")
+                    # Soportar reply_text (string) o responses (lista) y elegir aleatoriamente
+                    rep = matched.get("reply_text")
+                    if not rep:
+                        res_list = list(matched.get("responses") or [])
+                        if res_list:
+                            rep = random.choice(res_list)
+                    if not rep:
+                        rep = rules.get("fallback_text", "No entendí tu mensaje.")
                     _state.set(user_id, chat_id, "menu:dyn", {"current": current, "stack": stack})
-                    return {"text": reply}
+                    return {"text": rep}
             # Si no se encontró opción, continuar con NLU/FAQ/fallback global
             pass
 
@@ -301,50 +377,65 @@ class BotManager:
         # deben responderse con prioridad frente a una posible mala clasificación ML.
         # Si prefieres que NLU tenga prioridad, puedes cambiar esta lógica o
         # añadir una opción en rules.yaml (p.ej. nlu.first: true).
+        # PRE-CHECK: detectar intención de catálogo y frases de satisfacción antes del NLU ML
+        # 1) Priorizar solicitudes directas de catálogo (ej. "quiero ver el catálogo")
+        try:
+            catalog_patterns = []
+            catalog_reply = None
+            for it in list(nlu_cfg.get("intents") or []):
+                if (it.get("name") or "").lower() == "ver_catalogo":
+                    catalog_patterns = [str(p).lower() for p in (it.get("patterns") or [])]
+                    # Preferir reply_text del intent si está definido
+                    catalog_reply = it.get("reply_text")
+                    # también aceptar una lista de responses
+                    if not catalog_reply:
+                        res = list(it.get("responses") or [])
+                        if res:
+                            import random as _rnd
+                            catalog_reply = _rnd.choice(res)
+                    break
+            if catalog_patterns:
+                tnorm = text.strip().lower()
+                # coincidencia flexible: igualdad, inclusión o viceversa
+                if any(p == tnorm or p in tnorm or tnorm in p for p in catalog_patterns):
+                    # fallback si no hay texto en el intent: usar el bloque catalog del rules
+                    rep = catalog_reply or (rules.get("catalog", {}).get("message") or rules.get("fallback_text"))
+                    return {"text": rep}
+        except Exception:
+            # no bloquear flow si algo falla en pre-check
+            pass
+
+        # PRE-CHECK: respuestas cortas tipo 'satisfaccion' (ej. "que bien", "ok")
+        # Preferimos detectar estas frases rápidamente y devolver una respuesta
+        # amable configurada en el intent 'satisfaccion' (si existe).
+        try:
+            sat_patterns = []
+            sat_responses = []
+            for it in list(nlu_cfg.get("intents") or []):
+                if (it.get("name") or "").lower() == "satisfaccion":
+                    sat_patterns = [str(p).lower() for p in (it.get("patterns") or [])]
+                    sat_responses = list(it.get("responses") or [])
+                    if it.get("reply_text"):
+                        sat_responses.append(it.get("reply_text"))
+                    break
+            # si hay patterns configuradas para satisfaccion, comprobar coincidencia
+            if sat_patterns:
+                tnorm = text.strip().lower()
+                if any(p == tnorm or p in tnorm or tnorm in p for p in sat_patterns):
+                    import random as _rnd
+                    rep = _rnd.choice(sat_responses) if sat_responses else rules.get("fallback_text")
+                    return {"text": rep}
+        except Exception:
+            # no bloquear flow si algo falla en pre-check
+            pass
+
         provider = str((nlu_cfg.get("provider") or "simple")).lower()
         if enabled("faq"):
             ans = answer_faq(text_raw)
             if ans:
                 return {"text": ans}
 
-        # 8) NLU configurable (simple o ML)
-        # (nota: los bloques numerados posteriores se reindexan internamente)
-        provider = str((nlu_cfg.get("provider") or "simple")).lower()
-        # Crear instancia NLU (tipada de forma amplia para mypy)
-        from typing import Any as _Any
-        nlu: _Any
-        if provider == "ml":
-            nlu = MLNLU(nlu_cfg, data_dir=settings.data_dir)
-        else:
-            nlu = SimpleNLU(nlu_cfg)
-        best, score = nlu.classify(text)
-        if best and score >= nlu.threshold:
-            action = best.action
-            intent = best.intent_cfg
-            if action == "goto":
-                target = intent.get("target") or ""
-                if target and has_dynamic_menus() and menu_item(target):
-                    _state.set(user_id, chat_id, "menu:dyn", {"current": target, "stack": [menu_root_id()]})
-                    return {"text": menu_text(target)}
-            if action == "ticket_ask_detail" and enabled("tickets"):
-                _state.set(user_id, chat_id, "ticket:ask_detail")
-                ask = (rules.get("tickets", {}).get("message_ask_detail") or "Por favor, cuéntame brevemente el problema.")
-                return {"text": ask}
-            if action == "escalation" and enabled("escalation"):
-                _state.clear(user_id, chat_id)
-                return {"text": escalation_message()}
-            if action == "reply":
-                reply = intent.get("reply_text") or rules.get("fallback_text", "No entendí tu mensaje.")
-                return {"text": reply}
-        elif (nlu_cfg.get("intents") or []) and score > 0:
-            low_msg = nlu_cfg.get("low_confidence_message") or ("Para ayudarte mejor puedo: mostrar el menú, crear un ticket o derivarte a un agente. ¿Qué prefieres?")
-            return {"text": low_msg}
-
-        # 8) FAQ directo por palabra clave
-        if enabled("faq"):
-            ans = answer_faq(text_raw)
-            if ans:
-                return {"text": ans}
+        # NLU moved earlier: classification and FAQ pre-check handled above to prioritize intents
 
         # 9) Atajos por sinónimos (tickets / agente)
         if enabled("tickets") and (text == "/ticket" or matches_any(synonyms.get("ticket"))):

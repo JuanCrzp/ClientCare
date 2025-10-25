@@ -21,8 +21,6 @@ def build_greeting(user: str, chat_id: str | None = None) -> str:
             "Estoy aquí para ayudarte: puedes consultar el FAQ, abrir un ticket o hablar con un agente."
         )
 
-    # Añadir prompt de menú solo si el menú está habilitado y el prompt está activado
-    if menus_enabled and gmp_enabled:
-        greeting = f"{greeting}\n{gmp_text}".strip()
+    # El saludo NO debe incluir el prompt del menú, solo el texto puro.
 
     return greeting
