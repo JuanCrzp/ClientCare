@@ -25,8 +25,7 @@ def test_menu_to_faq_submenu():
     # Elegir FAQ (opción 1)
     r2 = bot.process_message({"text": "1", "platform_user_id": "u2", "group_id": "g1"})
     # Ahora el menú FAQ no contiene 'Submenú', validamos que sea el texto esperado
-    # Validar que la respuesta contiene una frase de invitación o agradecimiento
-    assert r2 and any(x in (r2.get("text") or "") for x in ["Gracias", "disposición", "gestión", "Pregúntame", "consulta", "ayuda"])
+    assert r2 and "Pregúntame" in (r2.get("text") or "")
     # Consultar algo del FAQ en submenú
     r3 = bot.process_message({"text": "planes", "platform_user_id": "u2", "group_id": "g1"})
     assert r3 and "text" in r3
@@ -37,8 +36,7 @@ def test_ticket_guided_flow():
     # Opción 2 desde menú
     bot.process_message({"text": "/start", "platform_user_id": "u3", "group_id": "g1"})
     r2 = bot.process_message({"text": "2", "platform_user_id": "u3", "group_id": "g1"})
-    # Validar que la respuesta contiene una frase de confirmación o ticket
-    assert r2 and any(x in (r2.get("text") or "") for x in ["ticket", "consulta", "detalle", "soporte", "atenderé", "Por favor"])
+    assert r2 and "Por favor" in (r2.get("text") or "")
     # Enviar detalle para crear ticket
     r3 = bot.process_message({"text": "Mi app falla al iniciar", "platform_user_id": "u3", "group_id": "g1"})
     assert r3 and "ticket" in (r3.get("text") or "").lower()

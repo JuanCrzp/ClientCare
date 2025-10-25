@@ -1393,114 +1393,6 @@
   "15556370335|573108341817": {
     "history": [
       {
-        "ts": 1761390307.3920352,
-        "role": "user",
-        "text": "Hola",
-        "meta": {}
-      },
-      {
-        "ts": 1761390818.8007295,
-        "role": "user",
-        "text": "Hola",
-        "meta": {}
-      },
-      {
-        "ts": 1761390843.6183045,
-        "role": "user",
-        "text": "Me gustaría ver el catálogo",
-        "meta": {}
-      },
-      {
-        "ts": 1761391221.9138367,
-        "role": "user",
-        "text": "Ver el menú principal",
-        "meta": {}
-      },
-      {
-        "ts": 1761391231.8343494,
-        "role": "user",
-        "text": "Ver menú",
-        "meta": {}
-      },
-      {
-        "ts": 1761391239.899804,
-        "role": "user",
-        "text": "Menú",
-        "meta": {}
-      },
-      {
-        "ts": 1761391293.942559,
-        "role": "user",
-        "text": "Catálogo",
-        "meta": {}
-      },
-      {
-        "ts": 1761391301.0205402,
-        "role": "user",
-        "text": "Menú",
-        "meta": {}
-      },
-      {
-        "ts": 1761391321.9318962,
-        "role": "user",
-        "text": "Hola",
-        "meta": {}
-      },
-      {
-        "ts": 1761391337.9579585,
-        "role": "user",
-        "text": "Envíame el menú",
-        "meta": {}
-      },
-      {
-        "ts": 1761391355.8176746,
-        "role": "user",
-        "text": "inicio",
-        "meta": {}
-      },
-      {
-        "ts": 1761391490.5643709,
-        "role": "user",
-        "text": "Hola",
-        "meta": {}
-      },
-      {
-        "ts": 1761391501.8454876,
-        "role": "user",
-        "text": "Quiero ver el menú",
-        "meta": {}
-      },
-      {
-        "ts": 1761391513.2947676,
-        "role": "user",
-        "text": "Menú",
-        "meta": {}
-      },
-      {
-        "ts": 1761391516.948575,
-        "role": "user",
-        "text": "Ver menú",
-        "meta": {}
-      },
-      {
-        "ts": 1761391716.186896,
-        "role": "user",
-        "text": "Hola",
-        "meta": {}
-      },
-      {
-        "ts": 1761391729.1110916,
-        "role": "user",
-        "text": "Hola",
-        "meta": {}
-      },
-      {
-        "ts": 1761391755.0883467,
-        "role": "user",
-        "text": "Hola",
-        "meta": {}
-      },
-      {
         "ts": 1761391769.397177,
         "role": "user",
         "text": "Ver el menú",
@@ -1991,9 +1883,117 @@
         "role": "user",
         "text": "Hola",
         "meta": {}
+      },
+      {
+        "ts": 1761402238.5544715,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761402270.2255645,
+        "role": "user",
+        "text": "Que horarios tiene",
+        "meta": {}
+      },
+      {
+        "ts": 1761402303.8361833,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761402326.989401,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761402417.2071779,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761402429.9643624,
+        "role": "user",
+        "text": "Qué horario manejan",
+        "meta": {}
+      },
+      {
+        "ts": 1761402451.5617082,
+        "role": "user",
+        "text": "Qué ubicación",
+        "meta": {}
+      },
+      {
+        "ts": 1761402461.634917,
+        "role": "user",
+        "text": "Horario",
+        "meta": {}
+      },
+      {
+        "ts": 1761402535.6934278,
+        "role": "user",
+        "text": "Horario",
+        "meta": {}
+      },
+      {
+        "ts": 1761402553.044611,
+        "role": "user",
+        "text": "Que precios tiene",
+        "meta": {}
+      },
+      {
+        "ts": 1761402610.755243,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761402621.839682,
+        "role": "user",
+        "text": "Qué horarios tiene",
+        "meta": {}
+      },
+      {
+        "ts": 1761402638.813405,
+        "role": "user",
+        "text": "Que ubicación tienen",
+        "meta": {}
+      },
+      {
+        "ts": 1761402655.2118313,
+        "role": "user",
+        "text": "Me gustaría ver el catálogo",
+        "meta": {}
+      },
+      {
+        "ts": 1761402671.4408298,
+        "role": "user",
+        "text": "Dame el menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761402683.1071746,
+        "role": "user",
+        "text": "5",
+        "meta": {}
+      },
+      {
+        "ts": 1761402692.6047308,
+        "role": "user",
+        "text": "Que puedes hacer",
+        "meta": {}
+      },
+      {
+        "ts": 1761402703.799075,
+        "role": "user",
+        "text": "Que precios manejan ?",
+        "meta": {}
       }
     ],
-    "last_active": 1761401375.191641
+    "last_active": 1761402703.799078
   },
   "15556370335|573043646043": {
     "history": [
