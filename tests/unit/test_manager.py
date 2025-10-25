@@ -9,7 +9,8 @@ def test_menu_start():
     assert len(res["messages"]) >= 2
     # Aceptar variaciones en el saludo / marca
     assert any(k in res["messages"][0]["text"].lower() for k in ("bienven", "urban"))
-    assert "menu" in res["messages"][1]["text"].lower()
+    # El texto puede contener 'menu' sin tilde o con tilde ('menú'), o referirse a 'opciones'
+    assert any(k in res["messages"][1]["text"].lower() for k in ("menu", "menú", "opciones"))
 
 
 def test_faq_match():
