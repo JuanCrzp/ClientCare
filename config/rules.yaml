@@ -14,11 +14,15 @@ default:
   locale: "es"                   # Idioma principal
   greetings_enabled: true        # (obsoleto, usar greeting_enabled)
   greeting_enabled: true         # Si es true, el bot muestra el saludo antes del menú
+  # Mostrar saludo y menú automáticamente en el primer mensaje si parece un saludo corto (e.g., "hola", "buenas").
+  # Si el primer mensaje del usuario parece una intención (varias palabras), el bot prioriza la intención.
+  greeting_force_on_first_message: true
+  # Mostrar un prompt en el saludo para ofrecer el menú solo si se solicita (cuando los menús estén habilitados)
+  greeting_menu_prompt_enabled: true
+  greeting_menu_prompt_text: "Si necesitas ver las opciones, dime 'menú' y te las envío."
   greeting_ttl_days: 7          # Repetir saludo automáticamente después de N días (0 = nunca repetir)
   greeting_text: |               # Puedes personalizar este saludo. Si greeting_enabled es false, no se muestra.
-    ¡Hola {user}! Soy tu asistente virtual de atención al cliente.
-    Estoy aquí para ayudarte: puedes consultar el FAQ, abrir un ticket o hablar con un agente.
-    Selecciona una opción del menú o cuéntame brevemente tu consulta.
+    ¡Hola {user}! Soy tu asistente virtual de atención al cliente. Estoy aquí para ayudarte.
   fallback_text: "No entendí tu mensaje. Escribe /start para ver el menú." # Respuesta por defecto si no se reconoce la entrada
 
   # =============================
@@ -27,11 +31,32 @@ default:
   memory:
     enabled: true               # Registrar historial y temas abiertos
     history_max: 100            # Máximo de mensajes por usuario/chat en memoria
-    resume_after_minutes: 60    # Ofrecer retomar si vuelve después de X minutos
+    # NUEVO: Duración flexible para ofrecer retomar conversación.
+    # Usa 'resume_after' con unidades (recomendado): "30m", "2h", "1d".
+    # Retrocompatibilidad: si 'resume_after_minutes' está presente, tiene prioridad.
+    resume_after: "60m"         # Tiempo de inactividad para ofrecer retomar (m/h/d)
+    resume_after_minutes: 60    # (Legacy) Ofrecer retomar si vuelve después de X minutos
     topic_ttl_days: 14          # Tiempo de vida de un tema abierto (días)
     offer_resume_message: "Veo que tenías pendiente: {topic}. ¿Quieres continuar?"
     history_command_enabled: true
     history_privacy_mask_emails: true
+
+    # =============================
+    # Inactividad (recordatorio y cierre automático)
+    # =============================
+    inactivity:
+      enabled: true
+      # Enviar un recordatorio si el usuario no responde tras este tiempo.
+      # Formatos soportados: "30m" (minutos), "2h" (horas), "1d" (días), "1h 30m".
+      reminder_after: "3m"
+      reminder_message: "¿Sigues ahí? Si necesitas ayuda, puedes contarme más o escribe 'menu' para ver opciones."
+      # Cerrar el chat si no hay respuesta tras este tiempo.
+      close_after: "5m"
+      close_message: "He cerrado el chat por inactividad. Si necesitas algo más, escribe de nuevo para empezar un nuevo tema."
+      # Enviar el recordatorio solo una vez por inactividad
+      send_reminder_once: true
+      # Estados del bot que se consideran 'esperando respuesta del usuario'
+      monitor_states: ["ticket:ask_detail"]
 
 
   # Encendido/apagado de funcionalidades principales (features)
@@ -60,6 +85,8 @@ default:
   # Se usan como apoyo a NLU e interpretación rápida fuera de menús.
   synonyms:
     menu: ["menu", "menú", "/start", "inicio", "empezar", "hola", "buenas"]
+    # Frases de aceptación para que el usuario pida el menú tras el saludo
+    menu_accept: ["si", "sí", "menu", "menú", "ver menu", "ver menú", "opciones", "ver opciones", "dame el menú", "dame el menu", "quiero el menu"]
     faq: ["faq", "preguntas", "ayuda", "info", "informacion", "información"]
     ticket: ["ticket", "soporte", "reclamo", "incidencia", "abrir ticket", "crear ticket", "abrirr tiket", "tickets"]
     agent: ["agente", "humano", "asesor", "representante", "hablar con agente", "soporte humano", "quiero humano"]
@@ -74,6 +101,7 @@ default:
   # Para ocultar un menú o una opción, usa 'enabled: false'.
   # Ejemplo: para ocultar el submenú ventas_menu, pon 'enabled: false' en ese bloque.
   menus:
+    enabled: true                # Habilita/Deshabilita completamente el sistema de menús (si false, no se menciona en el saludo)
     root: main
     items:
       main:

@@ -83,13 +83,16 @@ Se actualiza automáticamente vía pre-commit. No editar manualmente.
 │   │   └── __init__.py
 │   ├── utils
 │   │   ├── __init__.py
+│   │   ├── duration.py
 │   │   └── rate_limiter.py
 │   └── __init__.py
 ├── tests
 │   ├── integration
 │   ├── unit
 │   │   ├── test_conversation_repository.py
+│   │   ├── test_duration_parser.py
 │   │   ├── test_generate_tree.py
+│   │   ├── test_inactivity_flow.py
 │   │   ├── test_manager.py
 │   │   ├── test_memory_resume.py
 │   │   ├── test_nlu_advanced.py

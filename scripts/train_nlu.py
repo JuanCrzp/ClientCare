@@ -1,22 +1,24 @@
 from pathlib import Path
 import sys
-from pathlib import Path as _P
 import json
 
-# Asegurar imports locales sin pytest
-ROOT = _P(__file__).resolve().parents[1]
-SRC = ROOT / "src"
-if str(ROOT) not in sys.path:
-    sys.path.insert(0, str(ROOT))
-if str(SRC) not in sys.path:
-    sys.path.insert(0, str(SRC))
+# mypy: ignore-errors
 
-from src.config.rules_loader import get_rules_for
-from src.nlu.classifier import MLNLU
-from src.app.config import settings
+ROOT = Path(__file__).resolve().parents[1]
+SRC = ROOT / "src"
 
 
 def main() -> None:
+    # Ensure local imports work
+    if str(ROOT) not in sys.path:
+        sys.path.insert(0, str(ROOT))
+    if str(SRC) not in sys.path:
+        sys.path.insert(0, str(SRC))
+
+    from src.config.rules_loader import get_rules_for  # type: ignore
+    from src.nlu.classifier import MLNLU  # type: ignore
+    from src.app.config import settings  # type: ignore
+
     rules = get_rules_for(None)
     nlu_cfg = rules.get("nlu") or {}
     # Forzamos reentrenamiento

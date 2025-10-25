@@ -1,0 +1,944 @@
+{
+  "g1|u1": {
+    "history": [
+      {
+        "ts": 1761110137.9425087,
+        "role": "user",
+        "text": "/start",
+        "meta": {}
+      },
+      {
+        "ts": 1761110138.046793,
+        "role": "user",
+        "text": "precios",
+        "meta": {}
+      },
+      {
+        "ts": 1761110167.0510814,
+        "role": "user",
+        "text": "/start",
+        "meta": {}
+      },
+      {
+        "ts": 1761110167.1332226,
+        "role": "user",
+        "text": "precios",
+        "meta": {}
+      },
+      {
+        "ts": 1761110786.0407717,
+        "role": "user",
+        "text": "/start",
+        "meta": {}
+      },
+      {
+        "ts": 1761110786.0691724,
+        "role": "user",
+        "text": "precios",
+        "meta": {}
+      },
+      {
+        "ts": 1761111041.7358184,
+        "role": "user",
+        "text": "/start",
+        "meta": {}
+      },
+      {
+        "ts": 1761111041.7779925,
+        "role": "user",
+        "text": "precios",
+        "meta": {}
+      },
+      {
+        "ts": 1761111189.3170195,
+        "role": "user",
+        "text": "/start",
+        "meta": {}
+      },
+      {
+        "ts": 1761111189.359603,
+        "role": "user",
+        "text": "precios",
+        "meta": {}
+      },
+      {
+        "ts": 1761111214.1171079,
+        "role": "user",
+        "text": "/start",
+        "meta": {}
+      },
+      {
+        "ts": 1761111214.1618733,
+        "role": "user",
+        "text": "precios",
+        "meta": {}
+      },
+      {
+        "ts": 1761111444.0152137,
+        "role": "user",
+        "text": "/start",
+        "meta": {}
+      },
+      {
+        "ts": 1761111444.0356104,
+        "role": "user",
+        "text": "precios",
+        "meta": {}
+      },
+      {
+        "ts": 1761362415.429269,
+        "role": "user",
+        "text": "/start",
+        "meta": {}
+      },
+      {
+        "ts": 1761362415.457017,
+        "role": "user",
+        "text": "precios",
+        "meta": {}
+      },
+      {
+        "ts": 1761362804.037934,
+        "role": "user",
+        "text": "/start",
+        "meta": {}
+      },
+      {
+        "ts": 1761362804.0731237,
+        "role": "user",
+        "text": "precios",
+        "meta": {}
+      },
+      {
+        "ts": 1761362865.164284,
+        "role": "user",
+        "text": "/start",
+        "meta": {}
+      },
+      {
+        "ts": 1761362865.1844778,
+        "role": "user",
+        "text": "precios",
+        "meta": {}
+      }
+    ],
+    "last_active": 1761362865.1844795
+  },
+  "g1|u2": {
+    "history": [
+      {
+        "ts": 1761110138.0670044,
+        "role": "user",
+        "text": "/start",
+        "meta": {}
+      },
+      {
+        "ts": 1761110167.1568408,
+        "role": "user",
+        "text": "/start",
+        "meta": {}
+      },
+      {
+        "ts": 1761111041.813216,
+        "role": "user",
+        "text": "/start",
+        "meta": {}
+      },
+      {
+        "ts": 1761111041.853198,
+        "role": "user",
+        "text": "1",
+        "meta": {}
+      },
+      {
+        "ts": 1761111041.891751,
+        "role": "user",
+        "text": "planes",
+        "meta": {}
+      },
+      {
+        "ts": 1761111189.4114892,
+        "role": "user",
+        "text": "/start",
+        "meta": {}
+      },
+      {
+        "ts": 1761111189.4387863,
+        "role": "user",
+        "text": "1",
+        "meta": {}
+      },
+      {
+        "ts": 1761111189.480181,
+        "role": "user",
+        "text": "planes",
+        "meta": {}
+      },
+      {
+        "ts": 1761111214.2097535,
+        "role": "user",
+        "text": "/start",
+        "meta": {}
+      },
+      {
+        "ts": 1761111214.2378678,
+        "role": "user",
+        "text": "1",
+        "meta": {}
+      },
+      {
+        "ts": 1761111214.2823205,
+        "role": "user",
+        "text": "planes",
+        "meta": {}
+      },
+      {
+        "ts": 1761111444.0743284,
+        "role": "user",
+        "text": "/start",
+        "meta": {}
+      },
+      {
+        "ts": 1761111444.094299,
+        "role": "user",
+        "text": "1",
+        "meta": {}
+      },
+      {
+        "ts": 1761111444.1240096,
+        "role": "user",
+        "text": "planes",
+        "meta": {}
+      },
+      {
+        "ts": 1761362415.4996521,
+        "role": "user",
+        "text": "/start",
+        "meta": {}
+      },
+      {
+        "ts": 1761362415.5159798,
+        "role": "user",
+        "text": "1",
+        "meta": {}
+      },
+      {
+        "ts": 1761362415.5453713,
+        "role": "user",
+        "text": "planes",
+        "meta": {}
+      },
+      {
+        "ts": 1761362804.1225982,
+        "role": "user",
+        "text": "/start",
+        "meta": {}
+      },
+      {
+        "ts": 1761362804.1448338,
+        "role": "user",
+        "text": "1",
+        "meta": {}
+      },
+      {
+        "ts": 1761362804.173033,
+        "role": "user",
+        "text": "planes",
+        "meta": {}
+      },
+      {
+        "ts": 1761362865.2204404,
+        "role": "user",
+        "text": "/start",
+        "meta": {}
+      },
+      {
+        "ts": 1761362865.2389174,
+        "role": "user",
+        "text": "1",
+        "meta": {}
+      },
+      {
+        "ts": 1761362865.266173,
+        "role": "user",
+        "text": "planes",
+        "meta": {}
+      }
+    ],
+    "last_active": 1761362865.266175
+  },
+  "g1|u3": {
+    "history": [
+      {
+        "ts": 1761110138.0877528,
+        "role": "user",
+        "text": "/start",
+        "meta": {}
+      },
+      {
+        "ts": 1761110138.106151,
+        "role": "user",
+        "text": "2",
+        "meta": {}
+      },
+      {
+        "ts": 1761110167.179469,
+        "role": "user",
+        "text": "/start",
+        "meta": {}
+      },
+      {
+        "ts": 1761110167.1986432,
+        "role": "user",
+        "text": "2",
+        "meta": {}
+      },
+      {
+        "ts": 1761111041.922239,
+        "role": "user",
+        "text": "/start",
+        "meta": {}
+      },
+      {
+        "ts": 1761111041.9475799,
+        "role": "user",
+        "text": "2",
+        "meta": {}
+      },
+      {
+        "ts": 1761111041.9867663,
+        "role": "user",
+        "text": "Mi app falla al iniciar",
+        "meta": {}
+      },
+      {
+        "ts": 1761111042.0459025,
+        "role": "bot",
+        "text": "[Ticket creado]",
+        "meta": {
+          "state": "ticket_created"
+        }
+      },
+      {
+        "ts": 1761111189.5138056,
+        "role": "user",
+        "text": "/start",
+        "meta": {}
+      },
+      {
+        "ts": 1761111189.5433674,
+        "role": "user",
+        "text": "2",
+        "meta": {}
+      },
+      {
+        "ts": 1761111189.5869963,
+        "role": "user",
+        "text": "Mi app falla al iniciar",
+        "meta": {}
+      },
+      {
+        "ts": 1761111189.648378,
+        "role": "bot",
+        "text": "[Ticket creado]",
+        "meta": {
+          "state": "ticket_created"
+        }
+      },
+      {
+        "ts": 1761111214.3141496,
+        "role": "user",
+        "text": "/start",
+        "meta": {}
+      },
+      {
+        "ts": 1761111214.3417587,
+        "role": "user",
+        "text": "2",
+        "meta": {}
+      },
+      {
+        "ts": 1761111214.3796659,
+        "role": "user",
+        "text": "Mi app falla al iniciar",
+        "meta": {}
+      },
+      {
+        "ts": 1761111214.4382646,
+        "role": "bot",
+        "text": "[Ticket creado]",
+        "meta": {
+          "state": "ticket_created"
+        }
+      },
+      {
+        "ts": 1761111444.1429286,
+        "role": "user",
+        "text": "/start",
+        "meta": {}
+      },
+      {
+        "ts": 1761111444.1580045,
+        "role": "user",
+        "text": "2",
+        "meta": {}
+      },
+      {
+        "ts": 1761111444.1856773,
+        "role": "user",
+        "text": "Mi app falla al iniciar",
+        "meta": {}
+      },
+      {
+        "ts": 1761111444.2289078,
+        "role": "bot",
+        "text": "[Ticket creado]",
+        "meta": {
+          "state": "ticket_created"
+        }
+      },
+      {
+        "ts": 1761362415.56092,
+        "role": "user",
+        "text": "/start",
+        "meta": {}
+      },
+      {
+        "ts": 1761362415.5777497,
+        "role": "user",
+        "text": "2",
+        "meta": {}
+      },
+      {
+        "ts": 1761362415.6047149,
+        "role": "user",
+        "text": "Mi app falla al iniciar",
+        "meta": {}
+      },
+      {
+        "ts": 1761362415.644535,
+        "role": "bot",
+        "text": "[Ticket creado]",
+        "meta": {
+          "state": "ticket_created"
+        }
+      },
+      {
+        "ts": 1761362804.1878865,
+        "role": "user",
+        "text": "/start",
+        "meta": {}
+      },
+      {
+        "ts": 1761362804.2041693,
+        "role": "user",
+        "text": "2",
+        "meta": {}
+      },
+      {
+        "ts": 1761362804.2391787,
+        "role": "user",
+        "text": "Mi app falla al iniciar",
+        "meta": {}
+      },
+      {
+        "ts": 1761362804.2812126,
+        "role": "bot",
+        "text": "[Ticket creado]",
+        "meta": {
+          "state": "ticket_created"
+        }
+      },
+      {
+        "ts": 1761362865.2819097,
+        "role": "user",
+        "text": "/start",
+        "meta": {}
+      },
+      {
+        "ts": 1761362865.2958996,
+        "role": "user",
+        "text": "2",
+        "meta": {}
+      },
+      {
+        "ts": 1761362865.3227785,
+        "role": "user",
+        "text": "Mi app falla al iniciar",
+        "meta": {}
+      },
+      {
+        "ts": 1761362865.3638232,
+        "role": "bot",
+        "text": "[Ticket creado]",
+        "meta": {
+          "state": "ticket_created"
+        }
+      }
+    ],
+    "last_active": 1761362865.3638248
+  },
+  "g1|u4": {
+    "history": [
+      {
+        "ts": 1761110138.1276522,
+        "role": "user",
+        "text": "quiero abrir ticket",
+        "meta": {}
+      },
+      {
+        "ts": 1761110167.219521,
+        "role": "user",
+        "text": "quiero abrir ticket",
+        "meta": {}
+      },
+      {
+        "ts": 1761111042.0729444,
+        "role": "user",
+        "text": "quiero abrir ticket",
+        "meta": {}
+      },
+      {
+        "ts": 1761111042.1159232,
+        "role": "bot",
+        "text": "[Ticket creado]",
+        "meta": {
+          "state": "ticket_created"
+        }
+      },
+      {
+        "ts": 1761111063.9312243,
+        "role": "user",
+        "text": "quiero abrir ticket",
+        "meta": {}
+      }
+    ],
+    "last_active": 1761111063.9312286
+  },
+  "g1|u5": {
+    "history": [
+      {
+        "ts": 1761110138.1487,
+        "role": "user",
+        "text": "ver menu",
+        "meta": {}
+      },
+      {
+        "ts": 1761110167.2420695,
+        "role": "user",
+        "text": "ver menu",
+        "meta": {}
+      },
+      {
+        "ts": 1761111042.2687786,
+        "role": "user",
+        "text": "ver menu",
+        "meta": {}
+      },
+      {
+        "ts": 1761111189.8785458,
+        "role": "user",
+        "text": "ver menu",
+        "meta": {}
+      },
+      {
+        "ts": 1761111214.497643,
+        "role": "user",
+        "text": "ver menu",
+        "meta": {}
+      },
+      {
+        "ts": 1761111444.2657628,
+        "role": "user",
+        "text": "ver menu",
+        "meta": {}
+      },
+      {
+        "ts": 1761362415.6769242,
+        "role": "user",
+        "text": "ver menu",
+        "meta": {}
+      },
+      {
+        "ts": 1761362804.3146894,
+        "role": "user",
+        "text": "ver menu",
+        "meta": {}
+      },
+      {
+        "ts": 1761362865.3941863,
+        "role": "user",
+        "text": "ver menu",
+        "meta": {}
+      }
+    ],
+    "last_active": 1761362865.394188
+  },
+  "g1|u10": {
+    "history": [
+      {
+        "ts": 1761110846.4136448,
+        "role": "user",
+        "text": "/start",
+        "meta": {}
+      }
+    ],
+    "last_active": 1761110846.413651
+  },
+  "g1|u11": {
+    "history": [
+      {
+        "ts": 1761110846.4353535,
+        "role": "user",
+        "text": "precios",
+        "meta": {}
+      }
+    ],
+    "last_active": 1761110846.435359
+  },
+  "g1|u20": {
+    "history": [
+      {
+        "ts": 1761110864.3303812,
+        "role": "user",
+        "text": "/start",
+        "meta": {}
+      },
+      {
+        "ts": 1761110864.3713777,
+        "role": "user",
+        "text": "1",
+        "meta": {}
+      },
+      {
+        "ts": 1761110864.4131498,
+        "role": "user",
+        "text": "planes",
+        "meta": {}
+      }
+    ],
+    "last_active": 1761110864.4131541
+  },
+  "g1|u21": {
+    "history": [
+      {
+        "ts": 1761110864.4646173,
+        "role": "user",
+        "text": "/start",
+        "meta": {}
+      },
+      {
+        "ts": 1761110864.488966,
+        "role": "user",
+        "text": "2",
+        "meta": {}
+      },
+      {
+        "ts": 1761110864.533707,
+        "role": "user",
+        "text": "Mi app falla al iniciar",
+        "meta": {}
+      },
+      {
+        "ts": 1761110864.5915077,
+        "role": "bot",
+        "text": "[Ticket creado]",
+        "meta": {
+          "state": "ticket_created"
+        }
+      }
+    ],
+    "last_active": 1761110864.5915112
+  },
+  "g1|n1": {
+    "history": [
+      {
+        "ts": 1761110881.2000203,
+        "role": "user",
+        "text": "quiero abrir ticket",
+        "meta": {}
+      }
+    ],
+    "last_active": 1761110881.200024
+  },
+  "g1|n2": {
+    "history": [
+      {
+        "ts": 1761110881.2298715,
+        "role": "user",
+        "text": "men",
+        "meta": {}
+      }
+    ],
+    "last_active": 1761110881.2298777
+  },
+  "g1|i1": {
+    "history": [
+      {
+        "ts": 1761110938.4155757,
+        "role": "user",
+        "text": "ver menu",
+        "meta": {}
+      }
+    ],
+    "last_active": 1761110938.4155793
+  },
+  "g1|u_intent_test": {
+    "history": [
+      {
+        "ts": 1761111120.9184902,
+        "role": "user",
+        "text": "quiero abrir ticket",
+        "meta": {}
+      },
+      {
+        "ts": 1761111189.6744833,
+        "role": "user",
+        "text": "quiero abrir ticket",
+        "meta": {}
+      },
+      {
+        "ts": 1761111189.725532,
+        "role": "bot",
+        "text": "[Ticket creado]",
+        "meta": {
+          "state": "ticket_created"
+        }
+      }
+    ],
+    "last_active": 1761111189.725536
+  },
+  "g1|u_intent_test_1761111206865": {
+    "history": [
+      {
+        "ts": 1761111206.8908327,
+        "role": "user",
+        "text": "quiero abrir ticket",
+        "meta": {}
+      }
+    ],
+    "last_active": 1761111206.890837
+  },
+  "g1|u_intent_test_1761111214443": {
+    "history": [
+      {
+        "ts": 1761111214.4633708,
+        "role": "user",
+        "text": "quiero abrir ticket",
+        "meta": {}
+      }
+    ],
+    "last_active": 1761111214.463374
+  },
+  "g1|u_intent_test_1761111444231": {
+    "history": [
+      {
+        "ts": 1761111444.2455118,
+        "role": "user",
+        "text": "quiero abrir ticket",
+        "meta": {}
+      }
+    ],
+    "last_active": 1761111444.245514
+  },
+  "2072596071|2072596071": {
+    "history": [
+      {
+        "ts": 1761111470.8894677,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761111485.8994985,
+        "role": "user",
+        "text": "Muéstrame el menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761111502.0184865,
+        "role": "user",
+        "text": "Preguntas",
+        "meta": {}
+      },
+      {
+        "ts": 1761111510.6821806,
+        "role": "user",
+        "text": "Precios",
+        "meta": {}
+      },
+      {
+        "ts": 1761111517.3963768,
+        "role": "user",
+        "text": "9",
+        "meta": {}
+      },
+      {
+        "ts": 1761111524.471229,
+        "role": "user",
+        "text": "Que venden",
+        "meta": {}
+      },
+      {
+        "ts": 1761111533.455312,
+        "role": "user",
+        "text": "Derívame un agente",
+        "meta": {}
+      },
+      {
+        "ts": 1761276125.522467,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761363566.8988326,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761363577.7680337,
+        "role": "user",
+        "text": "Cómo estás",
+        "meta": {}
+      },
+      {
+        "ts": 1761363814.3719115,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761363818.4188073,
+        "role": "user",
+        "text": "Dame el menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761364141.6211524,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761364637.9910011,
+        "role": "user",
+        "text": "hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761364666.9695187,
+        "role": "user",
+        "text": "quiero ver los planes",
+        "meta": {}
+      },
+      {
+        "ts": 1761368189.2094395,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761368212.576262,
+        "role": "user",
+        "text": "Quiero ver los planes",
+        "meta": {}
+      },
+      {
+        "ts": 1761368360.6097443,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761368368.9172266,
+        "role": "user",
+        "text": "Menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761368374.7837965,
+        "role": "user",
+        "text": "Si",
+        "meta": {}
+      },
+      {
+        "ts": 1761368387.9835799,
+        "role": "user",
+        "text": "Menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761368767.4852238,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761368775.0300415,
+        "role": "user",
+        "text": "Ver el menú",
+        "meta": {}
+      },
+      {
+        "ts": 1761368780.0183349,
+        "role": "user",
+        "text": "1",
+        "meta": {}
+      },
+      {
+        "ts": 1761368789.384663,
+        "role": "user",
+        "text": "Qué precios maneja",
+        "meta": {}
+      },
+      {
+        "ts": 1761368916.0167706,
+        "role": "user",
+        "text": "Si",
+        "meta": {}
+      },
+      {
+        "ts": 1761372543.8879898,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      }
+    ],
+    "last_active": 1761372543.8879912
+  },
+  "g1|u_intent_test_1761362415646": {
+    "history": [
+      {
+        "ts": 1761362415.6580043,
+        "role": "user",
+        "text": "quiero abrir ticket",
+        "meta": {}
+      }
+    ],
+    "last_active": 1761362415.6580057
+  },
+  "g1|u_intent_test_1761362804283": {
+    "history": [
+      {
+        "ts": 1761362804.2948537,
+        "role": "user",
+        "text": "quiero abrir ticket",
+        "meta": {}
+      }
+    ],
+    "last_active": 1761362804.2948554
+  },
+  "g1|u_intent_test_1761362865365": {
+    "history": [
+      {
+        "ts": 1761362865.37648,
+        "role": "user",
+        "text": "quiero abrir ticket",
+        "meta": {}
+      }
+    ],
+    "last_active": 1761362865.3764825
+  }
+}

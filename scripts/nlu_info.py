@@ -1,18 +1,27 @@
-import sys, json
+import sys
+import json
 from pathlib import Path
+
+# mypy: ignore-errors
+
+
 ROOT = Path(__file__).resolve().parents[1]
 SRC = ROOT / "src"
-if str(ROOT) not in sys.path: sys.path.insert(0, str(ROOT))
-if str(SRC) not in sys.path: sys.path.insert(0, str(SRC))
-
-from src.nlu.classifier import MLNLU
-from src.config.rules_loader import get_rules_for
-from src.app.config import settings
 
 
 def main() -> None:
-    rules = get_rules_for(None)
-    nlu_cfg = rules.get("nlu") or {}
+    # Asegurar imports locales
+    if str(ROOT) not in sys.path:
+        sys.path.insert(0, str(ROOT))
+    if str(SRC) not in sys.path:
+        sys.path.insert(0, str(SRC))
+
+    from src.nlu.classifier import MLNLU  # type: ignore
+    from src.config.rules_loader import get_rules_for  # type: ignore
+    from src.app.config import settings  # type: ignore
+    from typing import cast
+
+    nlu_cfg = cast(dict, get_rules_for(None) or {}).get("nlu") or {}  # type: ignore[union-attr]
     model = MLNLU(nlu_cfg, data_dir=settings.data_dir)
     if not getattr(model, "_model", None):
         print("No hay modelo ML disponible. Entrena primero con scripts/train_nlu.py.")

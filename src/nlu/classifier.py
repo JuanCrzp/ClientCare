@@ -128,7 +128,8 @@ class MLNLU:
         exp_scores = {k: math.exp(v - max_log) for k, v in scores.items()}
         total = sum(exp_scores.values()) or 1.0
         probs = {k: v / total for k, v in exp_scores.items()}
-        best_label = max(probs, key=probs.get)
+        # Usar lambda para que mypy acepte el tipo del key callable
+        best_label = max(probs, key=lambda k: probs[k])
         best_prob = probs[best_label]
 
         # Mapear a intent config
