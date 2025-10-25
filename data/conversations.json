@@ -1393,36 +1393,6 @@
   "15556370335|573108341817": {
     "history": [
       {
-        "ts": 1761391769.397177,
-        "role": "user",
-        "text": "Ver el menú",
-        "meta": {}
-      },
-      {
-        "ts": 1761391833.3612514,
-        "role": "user",
-        "text": "/start",
-        "meta": {}
-      },
-      {
-        "ts": 1761391845.2310307,
-        "role": "user",
-        "text": "Hola",
-        "meta": {}
-      },
-      {
-        "ts": 1761391934.130319,
-        "role": "user",
-        "text": "Hola",
-        "meta": {}
-      },
-      {
-        "ts": 1761391953.3341646,
-        "role": "user",
-        "text": "Hola",
-        "meta": {}
-      },
-      {
         "ts": 1761392068.1135688,
         "role": "user",
         "text": "Hola",
@@ -1991,9 +1961,39 @@
         "role": "user",
         "text": "Que precios manejan ?",
         "meta": {}
+      },
+      {
+        "ts": 1761413322.669111,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761413398.3367755,
+        "role": "user",
+        "text": "Hola",
+        "meta": {}
+      },
+      {
+        "ts": 1761413422.0861378,
+        "role": "user",
+        "text": "Qué horario tienen",
+        "meta": {}
+      },
+      {
+        "ts": 1761413432.4304821,
+        "role": "user",
+        "text": "Quien son",
+        "meta": {}
+      },
+      {
+        "ts": 1761413469.852738,
+        "role": "user",
+        "text": "Qué precio tienen las camisetas urbanas",
+        "meta": {}
       }
     ],
-    "last_active": 1761402703.799078
+    "last_active": 1761413469.852742
   },
   "15556370335|573043646043": {
     "history": [

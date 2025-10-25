@@ -1,6 +1,5 @@
 
 import logging
-logging.basicConfig(level=logging.DEBUG)
 from fastapi import APIRouter, Request, HTTPException
 import os
 import httpx
@@ -84,8 +83,8 @@ async def _send_whatsapp_text(to: str, text: str):
                     "Please renew WHATSAPP_ACCESS_TOKEN in environment and restart the process (or update process env). "
                     "Further WhatsApp sends will be skipped for 5 minutes to avoid repeated 401s."
                 )
-        except Exception as e:
-            logging.exception(f"Error sending message to WhatsApp API for {to}: {e}")
+        except Exception:
+            logging.exception(f"Error sending message to WhatsApp API for {to}")
 
 
 @router.post("/webhook")
@@ -93,7 +92,7 @@ async def receive(request: Request):
     # Proteger la lectura del JSON para evitar 500 si el body no es JSON válido
     try:
         data = await request.json()
-    except Exception as e:
+    except Exception:
         logging.exception("Invalid JSON in webhook POST")
         raise HTTPException(status_code=400, detail="Invalid JSON payload")
 
@@ -158,9 +157,9 @@ async def receive(request: Request):
                         if isinstance(text_to_send, str) and text_to_send:
                             logging.info(f"Sending reply to {from_id}: {text_to_send}")
                             await _send_whatsapp_text(from_id, text_to_send)
-    except Exception as e:
+    except Exception:
         # Registrar excepción para poder depurar y devolver 500 para visibilidad
-        logging.exception(f"Error processing webhook POST: {e}")
+        logging.exception("Error processing webhook POST")
         raise HTTPException(status_code=500, detail="Error processing webhook event")
 
     return {"ok": True}

@@ -7,7 +7,7 @@ ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 if ROOT not in sys.path:
     sys.path.insert(0, ROOT)
 
-from src.bot_core.manager import BotManager
+from src.bot_core.manager import BotManager  # noqa: E402
 
 def print_log(msg):
     print(msg)

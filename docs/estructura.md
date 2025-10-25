@@ -107,6 +107,7 @@ Se actualiza automáticamente vía pre-commit. No editar manualmente.
 │   │   ├── test_nlu_advanced.py
 │   │   └── test_repository.py
 │   └── conftest.py
+├── .coverage
 ├── .coveragerc
 ├── .dockerignore
 ├── .env

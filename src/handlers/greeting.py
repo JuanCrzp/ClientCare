@@ -8,10 +8,8 @@ def build_greeting(user: str, chat_id: str | None = None) -> str:
         return ""
 
     # Config de menú para decidir si mencionarlo
-    menus_cfg = dict(rules.get("menus") or {})
-    menus_enabled = bool(menus_cfg.get("enabled", True)) and bool(menus_cfg.get("items") or {})
-    gmp_enabled = bool(rules.get("greeting_menu_prompt_enabled", True))
-    gmp_text = str(rules.get("greeting_menu_prompt_text") or "Si necesitas ver las opciones, dime 'menú' y te las envío.")
+    # menus_cfg = dict(rules.get("menus") or {})
+    # El prompt del menú se gestiona desde configuración cuando se envía el saludo con delays.
 
     # Usa greeting_text si está definido
     greeting = (rules.get("greeting_text") or "").replace("{user}", user or "").strip()

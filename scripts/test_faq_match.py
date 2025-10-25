@@ -7,7 +7,7 @@ if str(ROOT) not in sys.path:
 if str(SRC) not in sys.path:
     sys.path.insert(0, str(SRC))
 
-from src.handlers.faq import answer_faq
+from src.handlers.faq import answer_faq  # noqa: E402
 
 samples = [
     "horario",

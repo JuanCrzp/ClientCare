@@ -19,9 +19,9 @@ default:
   greeting_force_on_first_message: true
   # Mostrar un prompt en el saludo para ofrecer el menú solo si se solicita (cuando los menús estén habilitados)
   greeting_menu_prompt_enabled: true
-  greeting_menu_prompt_text: "Cuéntame, ¿en qué te puedo ayudar hoy?😎 
+  greeting_menu_prompt_text: "Cuéntame, ¿en qué te puedo ayudar hoy?😎
 
-  
+
    Si quieres, también puedo mandarte el menú con todas las opciones disponibles."
   # Segundos de retraso entre el saludo y el mensaje de prompt (float o int)
   greeting_menu_prompt_delay: 2

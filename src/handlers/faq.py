@@ -1,3 +1,8 @@
+import re
+from difflib import SequenceMatcher
+from ..config.rules_loader import get_rules
+
+
 def build_auto_capabilities(rules: dict, max_examples: int = 3) -> str:
     """Genera una respuesta profesional según features activas en la config.
 
@@ -60,9 +65,6 @@ def build_auto_capabilities(rules: dict, max_examples: int = 3) -> str:
         )
 
     return (primera + (" " + segunda if segunda else "")).strip()
-from ..config.rules_loader import get_rules
-import re
-from difflib import SequenceMatcher
 
 
 def _normalize(s: str) -> str:
@@ -80,8 +82,7 @@ def answer_faq(text: str, threshold: float = 0.75) -> str | None:
     all_rules = get_rules() or {}
     rules = (all_rules.get("default") or {})
     faq = rules.get("faq", []) or []
-    synonyms_list = (rules.get("synonyms") or {}).get("faq") or []
-    synonyms = [s.lower() for s in synonyms_list if isinstance(s, str)]
+    # synonyms_list = (rules.get("synonyms") or {}).get("faq") or []
 
     t = _normalize(text)
     if not t:
