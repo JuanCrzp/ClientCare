@@ -10,7 +10,6 @@ from ..handlers.ticket import open_ticket
 from ..handlers.escalation import escalation_message
 from ..handlers.greeting import build_greeting
 from ..nlu.classifier import SimpleNLU, MLNLU
-import random
 from ..utils.duration import parse_duration_to_seconds
 
 _state = StateRepository(Path(settings.data_dir))
@@ -431,7 +430,7 @@ class BotManager:
             # no bloquear flow si algo falla en pre-check
             pass
 
-        provider = str((nlu_cfg.get("provider") or "simple")).lower()
+    # provider variable previously assigned but unused; remove to satisfy linter
         if enabled("faq"):
             ans = answer_faq(text_raw)
             if ans:
