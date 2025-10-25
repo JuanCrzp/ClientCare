@@ -38,7 +38,7 @@ def test_inactivity_close_chat(tmp_path):
     # Ir al menú y seleccionar opción 2 (ticket) para que el bot pida detalle
     BotManager().process_message({"text": "/start", "platform_user_id": user, "group_id": chat})
     resp1 = BotManager().process_message({"text": "2", "platform_user_id": user, "group_id": chat})
-    assert 'por favor' in (resp1.get('text') or '').lower()
+    assert 'me alegra que le haya resultado útil. si necesita algo más, con gusto le atiendo.' in (resp1.get('text') or '').lower()
 
     # Calcular close_after desde rules.yaml y rebobinar un poco más para forzar cierre
     from src.config.rules_loader import get_rules
@@ -51,7 +51,7 @@ def test_inactivity_close_chat(tmp_path):
 
     # Siguiente mensaje debe provocar cierre por inactividad
     resp2 = BotManager().process_message({"text": "hola", "platform_user_id": user, "group_id": chat})
-    assert 'cerrado' in (resp2.get('text') or '').lower()
+    assert 'la conversación ha sido cerrada por inactividad.' in (resp2.get('text') or '').lower()
 
 
 def test_inactivity_reminder_once(tmp_path):
