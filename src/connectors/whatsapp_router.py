@@ -100,27 +100,48 @@ async def receive(request: Request):
     # Log completo de la petición para depuración
     logging.info(f"Webhook POST received: {data}")
 
-    # Extraer mensajes entrantes básicos
+    # Extraer mensajes entrantes básicos (validando tipos para mypy/CI)
     try:
-        for entry in data.get("entry", []):
-            for change in entry.get("changes", []):
-                value = change.get("value", {})
-                for msg in value.get("messages", []) or []:
-                    from_id = msg.get("from")  # número de usuario
-                    text = (msg.get("text", {}) or {}).get("body", "")
+        entries = data.get("entry")
+        if not isinstance(entries, list):
+            entries = []
+        for entry in entries:
+            changes = entry.get("changes")
+            if not isinstance(changes, list):
+                continue
+            for change in changes:
+                value = change.get("value")
+                if not isinstance(value, dict):
+                    continue
+                messages = value.get("messages")
+                if not isinstance(messages, list):
+                    continue
+                for msg in messages:
+                    if not isinstance(msg, dict):
+                        continue
+                    from_id = msg.get("from")
+                    if not isinstance(from_id, str):
+                        continue
+                    text = ""
+                    text_obj = msg.get("text")
+                    if isinstance(text_obj, dict):
+                        body = text_obj.get("body")
+                        if isinstance(body, str):
+                            text = body
                     logging.info(f"Incoming message from {from_id}: {text}")
                     payload = {
                         "platform": "whatsapp",
                         "platform_user_id": from_id,
-                        "group_id": value.get("metadata", {}).get("display_phone_number", ""),
+                        "group_id": value.get("metadata", {}).get("display_phone_number", "") if isinstance(value.get("metadata"), dict) else "",
                         "text": text,
                     }
                     res = manager.process_message(payload) or {}
                     logging.info(f"Manager response for {from_id}: {res}")
                     logging.debug(f"[DEBUG] Respuesta completa del manager (payload={payload}): {res}")
                     # Soportar respuestas múltiples con delays: {'messages': [{'text': 'a'}, {'text': 'b', 'delay':5}]}
-                    if res.get("messages") and isinstance(res.get("messages"), list):
-                        for m in res.get("messages"):
+                    messages_list = res.get("messages")
+                    if isinstance(messages_list, list):
+                        for m in messages_list:
                             try:
                                 d = float(m.get("delay", 0) or 0)
                             except Exception:
@@ -128,13 +149,15 @@ async def receive(request: Request):
                             if d > 0:
                                 logging.info(f"Delaying {d}s before sending next message to {from_id}")
                                 await asyncio.sleep(d)
-                            text_to_send = str(m.get("text") or "")
-                            if text_to_send:
+                            text_to_send = m.get("text")
+                            if isinstance(text_to_send, str) and text_to_send:
                                 logging.info(f"Sending reply to {from_id}: {text_to_send}")
                                 await _send_whatsapp_text(from_id, text_to_send)
-                    elif res.get("text"):
-                        logging.info(f"Sending reply to {from_id}: {res['text']}")
-                        await _send_whatsapp_text(from_id, res["text"])            
+                    else:
+                        text_to_send = res.get("text")
+                        if isinstance(text_to_send, str) and text_to_send:
+                            logging.info(f"Sending reply to {from_id}: {text_to_send}")
+                            await _send_whatsapp_text(from_id, text_to_send)
     except Exception as e:
         # Registrar excepción para poder depurar y devolver 500 para visibilidad
         logging.exception(f"Error processing webhook POST: {e}")
