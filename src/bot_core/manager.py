@@ -429,7 +429,7 @@ class BotManager:
             # no bloquear flow si algo falla en pre-check
             pass
 
-        provider = str((nlu_cfg.get("provider") or "simple")).lower()
+    # provider = str((nlu_cfg.get("provider") or "simple")).lower()
         if enabled("faq"):
             ans = answer_faq(text_raw)
             if ans:
