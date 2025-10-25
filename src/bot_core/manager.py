@@ -237,7 +237,8 @@ class BotManager:
                             if not rep:
                                 res_list = list(intent.get("responses") or [])
                                 if res_list:
-                                    rep = random.choice(res_list)
+                                    # Deterministic selection: prefer the first configured response
+                                    rep = res_list[0]
                             if not rep:
                                 rep = rules.get("fallback_text", "No entendí tu mensaje.")
                             return {"text": rep}
@@ -350,7 +351,8 @@ class BotManager:
                     if not rep:
                         res_list = list(matched.get("responses") or [])
                         if res_list:
-                            rep = random.choice(res_list)
+                            # Deterministic selection for menu replies
+                            rep = res_list[0]
                     if not rep:
                         rep = rules.get("fallback_text", "No entendí tu mensaje.")
                     _state.set(user_id, chat_id, "menu:dyn", {"current": current, "stack": stack})
@@ -391,8 +393,8 @@ class BotManager:
                     if not catalog_reply:
                         res = list(it.get("responses") or [])
                         if res:
-                            import random as _rnd
-                            catalog_reply = _rnd.choice(res)
+                            # Deterministic: use first available response from intent
+                            catalog_reply = res[0]
                     break
             if catalog_patterns:
                 tnorm = text.strip().lower()
@@ -422,14 +424,14 @@ class BotManager:
             if sat_patterns:
                 tnorm = text.strip().lower()
                 if any(p == tnorm or p in tnorm or tnorm in p for p in sat_patterns):
-                    import random as _rnd
-                    rep = _rnd.choice(sat_responses) if sat_responses else rules.get("fallback_text")
+                    # Deterministic: pick the first configured satisfaction response
+                    rep = sat_responses[0] if sat_responses else rules.get("fallback_text")
                     return {"text": rep}
         except Exception:
             # no bloquear flow si algo falla en pre-check
             pass
 
-    # provider = str((nlu_cfg.get("provider") or "simple")).lower()
+        provider = str((nlu_cfg.get("provider") or "simple")).lower()
         if enabled("faq"):
             ans = answer_faq(text_raw)
             if ans:
